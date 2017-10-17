@@ -11,7 +11,27 @@
     
     <link rel="stylesheet" href="/css/handler.css">
 
-    <title>Middleman</title>    
+    <title>Middleman</title>
+    <script>
+        var problems = <%- JSON.stringify(problems) %>;
+        
+        function getDetails(problemIndex){
+            document.getElementById("assigned").style.display = "none";
+            document.getElementById("details").style.display = "block";
+            document.getElementById("problemSummary").innerHTML = problems[problemIndex].summary;
+            document.getElementById("problemDescription").innerHTML = problems[problemIndex].description;
+            document.getElementById("problemAddress").innerHTML = JSON.stringify(problems[problemIndex].address);
+            document.getElementById("problemPhone").innerHTML = problems[problemIndex].phone;
+            document.getElementById("problemType").innerHTML = problems[problemIndex].priority;
+            document.getElementById("problemFixer").innerHTML = problems[problemIndex].fixer;
+            document.getElementById("problemDeadline").innerHTML = problems[problemIndex].deadline;
+        }
+        
+        function getAssignments (){
+            document.getElementById("assigned").style.display = "block";
+            document.getElementById("details").style.display = "none";
+        }
+    </script>
 </head>
 
 <body>
@@ -26,7 +46,7 @@
         <%for (var i = 0; i < problems.length; i ++) {%>
             <%if(problems[i].status === 'onGoing' && problems[i].priority === 'red') {%>
                 <details class="onGoingDetails">
-                    <summary <% if(typeof problems[i].requestCompletedFixer != 'undefined' && problems[i].requestCompletedFixer == true) {%> style="color: green;" <% } %> >
+                    <summary <% if(typeof problems[i].requestCompletedFixer != 'undefined' && problems[i].requestCompletedFixer == true) {%> style="color: green;" <% } %> onclick="getDetails(<%= i %>);">
                         <%=problems[i].summary%>
                             -
                             <%=problems[i]._id%>
@@ -71,7 +91,7 @@
         <%for (var i = 0; i < problems.length; i ++) {%>
             <%if(problems[i].status === 'onGoing' && problems[i].priority === 'yellow') {%>
                 <details class="onGoingDetails">
-                    <summary <% if(typeof problems[i].requestCompletedFixer != 'undefined' && problems[i].requestCompletedFixer == true) {%> style="color: green;" <% } %> >
+                    <summary <% if(typeof problems[i].requestCompletedFixer != 'undefined' && problems[i].requestCompletedFixer == true) {%> style="color: green;" <% } %> onclick="getDetails(<%= i %>);">
                         <%=problems[i].summary%>
                             -
                             <%=problems[i]._id%>
@@ -116,7 +136,7 @@
         <%for (var i = 0; i < problems.length; i ++) {%>
             <%if(problems[i].status === 'onGoing' && problems[i].priority === 'green') {%>
                 <details class="onGoingDetails">
-                    <summary <% if(typeof problems[i].requestCompletedFixer != 'undefined' && problems[i].requestCompletedFixer == true) {%> style="color: green;" <% } %> >
+                    <summary <% if(typeof problems[i].requestCompletedFixer != 'undefined' && problems[i].requestCompletedFixer == true) {%> style="color: green;" <% } %> onclick="getDetails(<%= i %>);">
                         <%=problems[i].summary%>
                             -
                             <%=problems[i]._id%>
@@ -153,7 +173,7 @@
                 </div>
                 <%}}%>
     </div>
-    <div class="newAssigned">
+    <div id="assigned" class="newAssigned">
         <img class="backgroundImg" src="/img/rectangle.png"/>
         <h1>
             Assigned
@@ -245,6 +265,17 @@
                 </details>
             <% } %>
         </div>
+    </div>
+    <div id="details" class="newAssigned" style="display: none">
+        <img class="backgroundImg" src="/img/rectangle.png"/>
+        <h1 id="problemSummary"></h1>
+        <h2 onclick=getAssignments(); style="cursor: pointer; color: aqua"> Click to head back to assignments</h2>
+        <p id="problemDescription"></p>
+        <p id="problemAddress"></p>
+        <p id="problemPhone"></p>
+        <p id="problemType"></p>
+        <p id="problemFixer"></p>
+        <p id="problemDeadline"></p>
     </div>
     <div class="lastUpdates">
         <img class="backgroundImg" src="/img/rectangle.png"/>

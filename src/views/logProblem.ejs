@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="/css/logProblem.css">
 
     <title>Middleman</title>
+    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+     <script>
+        function captchaSubmit(data) {
+            console.log("Form submit");
+            document.getElementById("formID").submit();
+        }
+    </script>
 </head>
 
 <body>
@@ -20,7 +27,7 @@
         <h1>
             Log problem
         </h1>
-        <form action='/auth/logProblem' method='post'>
+        <form id="formID" action='/auth/logProblem' method='post'>
             <input type="text" name="summary" placeholder="Summary" /><br/>
             <textarea rows="7" name="description" placeholder="Tell us about your problem"></textarea><br/>
             <input type="text" name="addressLine1" id="inputStreet" placeholder="Street adress, P.O. box, company name, etc" /><br/>
@@ -30,7 +37,12 @@
             <input type="text" name="zip" id="inputZip" placeholder="Zip" /><br/>
             <input type="text" name="country" id="inputCountry" placeholder="Country" /><br/>
             <input type="tel" pattern='^\+?\d{0,13}' name="phone" placeholder="Phone number" /><br/>
-            <input type='submit' value='Send' />
+            <button
+                class="g-recaptcha"
+                data-sitekey="6Lc82DQUAAAAADu2ZiM37QqQ31eA1YaFLJqmUIW4"
+                data-callback="captchaSubmit">
+            Submit
+            </button>
         </form>
     </div>
 </body>

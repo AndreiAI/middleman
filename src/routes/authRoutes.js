@@ -9,7 +9,13 @@ var objectId = require('mongodb').ObjectID;
 const nodemailer = require("nodemailer");
 var passport = require('passport');
 
+const querystring = require('querystring');
+const https = require('https');
+
 var database = require('../controllers/database')();
+
+const recaptchaSecretKey = "6Lc82DQUAAAAACkiLWujYLGcxrRtl5SXp9BhPvgY";
+const recaptchaURL = "https://www.google.com/recaptcha/api/siteverify";
 
 var mail = require('../controllers/mail');
 
@@ -196,38 +202,78 @@ var router = function () {
             res.render('logProblem');
         })
         .post(function (req, res) {
-            database.getHandlers(function (resultsHandlers) {
-                database.getProblems({}, function (resultsProblems) {
-                    var d = Date.now();
-                    var problem = {
-                        totalTime: d,
-                        client: req.user.email,
-                        clientFirstName: req.user.firstName,
-                        summary: req.body.summary,
-                        description: req.body.description,
-                        address: {
-                            adressLine1: req.body.addressLine1,
-                            adressLine2: req.body.addressLine2,
-                            city: req.body.city,
-                            state: req.body.state,
-                            zip: req.body.zip,
-                            country: req.body.country
-                        },
-                        phone: req.body.phone,
-                        handler: resultsHandlers[resultsProblems.length % resultsHandlers.length].email,
-                        handlerFirstName: resultsHandlers[resultsProblems.length % resultsHandlers.length].firstName,
-                        status: 'pending'
-                    }
+            //~~~~~~~~~~~~~~~~Check for spambots~~~~~~~~~~~~~~~~~~~~~~~~
+            var userIP = req.connection.remoteAddress;
 
-                    database.saveProblem(problem, function (response) {
-                        if (response === true) {
-                            res.redirect('client');
-                        } else {
-                            console.log(response);
-                        }
-                    });
+            var postData = querystring.stringify({
+                'secret': recaptchaSecretKey,
+                'response': req.body['g-recaptcha-response'],
+                'remoteip': userIP
+            });
+
+            var options = {
+                hostname: 'google.com',
+                port: 443,
+                path: '/recaptcha/api/siteverify',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Length': postData.length
+                }
+            };
+
+            var request = https.request(options, (response) => {
+                console.log('statusCode:', response.statusCode);
+                console.log('headers:', response.headers);
+
+                response.on('data', (data) => {
+                    data = JSON.parse(data);
+
+                    if (data.success) {
+                        database.getHandlers(function (resultsHandlers) {
+                            database.getProblems({}, function (resultsProblems) {
+                                var d = Date.now();
+                                var problem = {
+                                    totalTime: d,
+                                    client: req.user.email,
+                                    clientFirstName: req.user.firstName,
+                                    summary: req.body.summary,
+                                    description: req.body.description,
+                                    address: {
+                                        adressLine1: req.body.addressLine1,
+                                        adressLine2: req.body.addressLine2,
+                                        city: req.body.city,
+                                        state: req.body.state,
+                                        zip: req.body.zip,
+                                        country: req.body.country
+                                    },
+                                    phone: req.body.phone,
+                                    handler: resultsHandlers[resultsProblems.length % resultsHandlers.length].email,
+                                    handlerFirstName: resultsHandlers[resultsProblems.length % resultsHandlers.length].firstName,
+                                    status: 'pending'
+                                }
+
+                                database.saveProblem(problem, function (response) {
+                                    if (response === true) {
+                                        res.redirect('client');
+                                    } else {
+                                        console.log(response);
+                                    }
+                                });
+                            });
+                        });
+                    } else {
+                        req.logout();
+                        res.redirect('/');
+                    }
                 });
             });
+
+            request.write(postData);
+            request.end();
+
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         });
 
     authRouter.route('/email/logProblem')
