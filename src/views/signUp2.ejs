@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Middleman</title>
+
+</head>
+
+<body>
+    <% if(typeof(fail) !== 'undefined' && fail) { %>
+    <p>Email already exists</p>
+    <% } %>
+    <h1>Sign up:</h1>
+    <form action="/auth/signUp" method="post">
+        <input type="text" name="firstName" placeholder="First Name" required><br>
+        <input type="text" name="lastName" placeholder="Last Name" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" required><br>
+        <input type="submit" value="Sign up">
+    </form>
+</body>
+
+</html>

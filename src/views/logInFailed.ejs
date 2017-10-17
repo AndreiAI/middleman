@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link rel="stylesheet" href="/css/index.css">
+    
+    <script src='/js/index.js' ></script>
+
+    <title>Solverly</title>
+</head>
+
+<body>
+    <div class="inForm">
+        <img id="backgroundImg" src="/img/rectangle.png"/>
+        <h1 style="color: red;">Credentials incorrect.</h1>
+        <div>
+            <h2 onclick="enableLogIn(this)">
+                Log In
+            </h2>
+            <h2 onclick="enableSignUp(this)">
+                Sign Up
+            </h2>
+            <form id="logInForm" action="/auth/logIn" method="post">
+                <div>
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <div>
+                    <input class="submit" type="submit" value="Log in">
+                </div>
+            </form>
+            <form id="passResetButton" action="/auth/passReset" method="get">
+                <input type="submit" value="Forgot password"/>
+            </form>
+            <form id="signUpForm" action="/auth/signUp" method="post">
+                <div>
+                    <label>First name</label>
+                    <input type="text" name="firstName" placeholder="First Name" required>
+                </div>
+                <div>
+                    <label>Second name</label>
+                    <input type="text" name="lastName" placeholder="Last Name" required>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div>
+                    <label>Confirm</label>
+                    <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+                <div>
+                    <input class="submit" type="submit" value="Sign up">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

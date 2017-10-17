@@ -1,0 +1,205 @@
+* {
+    margin: 0 0;
+    padding: 0 0;
+}
+
+body {
+    background-image: url(../img/LEJ9mSj.jpg);
+}
+
+.backgroundImg {
+    position: absolute;
+    width: 60vw;
+    height: 50vh;
+    z-index: -1;
+}
+
+h1 {
+    margin-top: 5vw;
+    text-align: center;
+    font-size: 3em;
+    color: #eff3f9;
+}
+
+h2 {
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+    text-align: center;
+    font-size: 2em;
+}
+
+.problemsUpdatesList {
+    position: absolute;
+    top: 30vh;
+    left: 20vw;
+    right: 20vw;
+    width: 60vh;
+    height: 50vh;
+}
+
+.problemsList {
+    position: absolute;
+    /*border-style: solid;*/
+    border-right-style: solid;
+    width: 30vw;
+    height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.updatesList {
+    position: absolute;
+    /*border-style: solid;*/
+    border-left-style: solid;
+    margin-left: 30vw;
+    width: 30vw;
+    height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#problems {
+    margin-top: 1vh;
+}
+
+#updates {
+    margin-top: 1vh;
+    max-width: 29vw;
+    max-height: 33vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.inputChat {
+    position: absolute;
+    left: 1vw;
+    bottom: 1vh;
+}
+
+.inputChat>textarea {
+    display: block;
+    width: 25vw;
+}
+
+.inputChat>input {
+    width: 2vw;
+    margin-left: 23vw;
+}
+
+li {
+    font-size: 1em;
+    margin-left: 0.5vw;
+}
+
+#problems li {
+    cursor: pointer;
+}
+
+#problems li:hover {
+    background-color: aqua;
+}
+
+li p {
+    display: inline-block;
+}
+
+#problems li p {
+    width: 20vw;
+    max-width: 29vw;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+#updates li p {
+    width: 29vw;
+    max-width: 29vw;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+li form {
+    position: absolute;
+    display: inline-block;
+    right: 3vw;
+}
+
+li input {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    margin: 0 0;
+    padding: 0 0;
+    font-size: 1em;
+}
+
+li input:hover {
+    color: red;
+}
+
+#completed {
+    position: absolute;
+    top: 25vh;
+    left: 72vw;
+    width: 8vw;
+    height: 3vh;
+}
+
+#completed input {
+    width: 8vw;
+    height: 3vh;
+}
+
+#newProblem {
+    position: absolute;
+    top: 85vh;
+    left: 72vw;
+    width: 8vw;
+    height: 3vh;
+}
+
+#newProblem input {
+    width: 8vw;
+    height: 3vh;
+}
+
+#backButton {
+    position: absolute;
+    right: 3vw;
+    bottom: 9vh;
+    width: 8vw;
+    height: 3vh;
+}
+
+#backButton input {
+    width: 8vw;
+    height: 3vh;
+}
+
+#logOut {
+    position: absolute;
+    right: 3vw;
+    bottom: 5vh;
+    width: 8vw;
+    height: 3vh;
+}
+
+#logOut input {
+    width: 8vw;
+    height: 3vh;
+}
+
+#profileSettings {
+    position: absolute;
+    right: 15vw;
+    bottom: 5vh;
+    width: 10vw;
+    height: 3vh;
+}
+
+#profileSettings input {
+    width: 10vw;
+    height: 3vh;
+}

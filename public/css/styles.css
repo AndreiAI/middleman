@@ -1,0 +1,72 @@
+textarea {
+    width: 100%;
+}
+
+.handlerDisplay {
+    background-color: white;
+}
+
+.backWhite {
+    width: 60%;
+    position: fixed;
+    background-color: aliceblue;
+    padding: 20px;
+}
+
+.onGoingDetails {
+    /*float: left;*/
+    /*width: 50%;*/
+}
+
+.onGoingOptions {
+    /*float: right;*/
+}
+
+.priorityRed {
+    background-color: aliceblue;
+    position: fixed;
+    margin-left: 10%;
+    width: 20%;
+    max-height: 50%;
+    overflow-y: auto;
+}
+
+.priorityRed>h1 {
+    color: red;
+}
+
+.priorityYellow {
+    background-color: aliceblue;
+    position: fixed;
+    margin-left: 40%;
+    width: 20%;
+    max-height: 50%;
+    overflow-y: auto;
+}
+
+.priorityYellow>h1 {
+    color: yellow;
+}
+    
+.priorityGreen {
+    background-color: aliceblue;
+    position: fixed;
+    margin-left: 70%;
+    width: 20%;
+    max-height: 50%;
+    overflow-y: auto;
+}
+
+.priorityGreen>h1 {
+    color: green;
+}
+
+.newAssigned {
+    position: fixed;
+    background-color: aqua;
+    margin-left: 10%;
+    margin-top: 40%;
+    width: 80%;
+    max-height: 20%;
+    overflow-y: auto;
+}

@@ -1,0 +1,163 @@
+.priorityRed {
+    position: absolute;
+    left: 4vw;
+    top: 5vh;
+    width: 20vw;
+    height: 50vh;
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    border-style: solid;
+}
+
+.priorityYellow {
+    position: absolute;
+    left: 28vw;
+    top: 5vh;
+    width: 20vw;
+    height: 50vh;
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    border-style: solid;
+}
+
+.priorityGreen {
+    position: absolute;
+    left: 52vw;
+    top: 5vh;
+    width: 20vw;
+    height: 50vh;
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    border-style: solid;
+}
+
+.newAssigned {
+    position: absolute;
+    left: 4vw;
+    top: 60vh;
+    width: 68vw;
+    height: 38vh;
+    max-height: 38vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    border-style: solid;
+}
+
+.onSite {
+    position: absolute;
+    left: 0vw;
+    top: 8vh;
+    width: 34vw;
+    height: 30vh;
+    max-height: 30vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    border-top: solid;
+    border-right: solid;
+}
+
+.onEmail {
+    position: absolute;
+    left: 34vw;
+    top: 8vh;
+    display: inline-block;
+    width: 34vw;
+    height: 30vh;
+    max-height: 30vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    border-top: solid;
+    border-left: solid;
+}
+
+.lastUpdates {
+    position: absolute;
+    left: 76vw;
+    top: 5vh;
+    width: 22vw;
+    height: 93vh;
+    max-height: 93vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    border-style: solid;
+}
+
+p {
+    margin-left: 1vw;
+    max-width: 18vw;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+form {
+    margin-left: 1vw;
+    max-width: 18vw;
+}
+
+.newAssigned p {
+    max-width: 28vw;
+}
+
+.lastUpdates input {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    margin: 0 0;
+    padding: 0 0;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+
+.lastUpdates input {
+    cursor: pointer;
+    margin-left: -0.5vw;
+    max-width: 21vw;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.priorityRed h1 {
+    color: red;
+}
+
+.priorityYellow h1 {
+    color: yellow;
+}
+
+.priorityGreen h1 {
+    color: green;
+}
+
+details {
+    list-style: none;
+    margin: 1vh 0.5vw 1vh 0.5vw;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary {
+    cursor: pointer;
+}

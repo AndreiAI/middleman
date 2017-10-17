@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link rel="stylesheet" href="/css/client.css">
+    
+    <script src='/js/client.js' ></script>
+
+    <title>Middleman</title>
+</head>
+
+<body>
+    <h1>
+        Completed problems
+    </h1>
+    <div class="problemsUpdatesList">
+        <img class="backgroundImg" src="/img/rectangle.png"/>
+        <div class="problemsList">
+            <div class="problemsListHeader">
+                <h2>
+                    Problems
+                </h2>
+                <div id="problems">
+                    <% if(problems != null) { %>
+                        <% problems.forEach(function(problem){ %>
+                            <li id="problem<%= problem._id %>" onclick="toggleUpdatesForProblem('<%= problem._id %>')">
+                                <p>
+                                    <%= problem.summary %>
+                                </p>
+                                <form action="/problem/<%= problem._id %>" method="get">
+                                    <input type='submit' value='Details' />
+                                </form>                                
+                            </li>
+                        <% }); %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="updatesList">
+            <div class="updatesListHeader">
+                <h2>
+                    Updates
+                </h2>
+                <div id="updates">
+                    <% if(problems != null) { %>
+                        <% problems.forEach(function(problem){ %>
+                            <% if(updates[problem._id] != null) { %>
+                                <% updates[problem._id].forEach(function(update){ %>
+                                    <li class="updatesForProblem<%= problem._id %>" style="display: none">
+                                        <p>
+                                            <%= update.timestamp %> - <%= update.author %>: <%= update.update %>
+                                        </p>
+                                    </li>
+                                <% }); %>
+                            <% } %>
+                        <% }); %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id="logOut" action="/auth/logOut" method="post">
+        <input type="submit" value="Log out">
+    </form>
+    <form id="backButton" action="<%= back %>" method="post">
+        <input type="submit" value="Back" />
+    </form>
+</body>
+
+</html>

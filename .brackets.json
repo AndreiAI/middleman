@@ -1,0 +1,8 @@
+{
+    "bb.beautify.onSave": true,
+    "language": {
+        "ejs": {
+            "bb.beautify.onSave": false
+        }
+    }
+}

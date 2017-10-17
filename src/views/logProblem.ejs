@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link rel="stylesheet" href="/css/logProblem.css">
+
+    <title>Middleman</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <img class="backgroundImg" src="/img/rectangle.png"/>
+        <h1>
+            Log problem
+        </h1>
+        <form action='/auth/logProblem' method='post'>
+            <input type="text" name="summary" placeholder="Summary" /><br/>
+            <textarea rows="7" name="description" placeholder="Tell us about your problem"></textarea><br/>
+            <input type="text" name="addressLine1" id="inputStreet" placeholder="Street adress, P.O. box, company name, etc" /><br/>
+            <input type="text" name="addressLine2" id="inputUnit" placeholder="Apartament, suite, unit, building, floor, etc" /><br/>
+            <input type="text" name="city" id="inputCity" placeholder="City" /><br/>
+            <input type="text" name="state" id="inputState" placeholder="State" /><br/>
+            <input type="text" name="zip" id="inputZip" placeholder="Zip" /><br/>
+            <input type="text" name="country" id="inputCountry" placeholder="Country" /><br/>
+            <input type="tel" pattern='^\+?\d{0,13}' name="phone" placeholder="Phone number" /><br/>
+            <input type='submit' value='Send' />
+        </form>
+    </div>
+</body>
+<script src='/js/logProblem.js'></script>
+</html>

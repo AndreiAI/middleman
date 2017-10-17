@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link rel="stylesheet" href="/css/handler.css">
+
+    <title>Middleman</title>    
+</head>
+
+<body>
+    <form action="/auth/logOut" method="post">
+        <input type="submit" value="Log out">
+    </form>
+    <div class="priorityRed">
+        <img class="backgroundImg" src="/img/rectangle.png"/>
+        <h1>
+            Red
+        </h1>
+        <%for (var i = 0; i < problems.length; i ++) {%>
+            <%if(problems[i].status === 'onGoing' && problems[i].priority === 'red') {%>
+                <details class="onGoingDetails">
+                    <summary <% if(typeof problems[i].requestCompletedFixer != 'undefined' && problems[i].requestCompletedFixer == true) {%> style="color: green;" <% } %> >
+                        <%=problems[i].summary%>
+                            -
+                            <%=problems[i]._id%>
+                    </summary>
+                    <p>
+                        Description:
+                        <%=problems[i].description%>
+                    </p>
+                    <p>
+                        Address:
+                        <%=JSON.stringify(problems[i].address)%>
+                    </p>
+                    <p>
+                        Phone:
+                        <%=problems[i].phone%>
+                    </p>
+                    <p>
+                        Type:
+                        <%=problems[i].type%>
+                    </p>
+                    <p>
+                        Fixer:
+                        <%=problems[i].fixer%>
+                    </p>
+                    <p>
+                        Deadline:
+                        <%=problems[i].deadline%>
+                    </p>
+                    <form action="/problem/<%= problems[i]._id %>" method="get">
+                        <input type='submit' value='Details' />
+                    </form>
+                </details>
+                <div class="onGoingOptions">
+                </div>
+                <%}}%>
+    </div>
+    <div class="priorityYellow">
+        <img class="backgroundImg" src="/img/rectangle.png"/>
+        <h1>
+            Yellow
+        </h1>
+        <%for (var i = 0; i < problems.length; i ++) {%>
+            <%if(problems[i].status === 'onGoing' && problems[i].priority === 'yellow') {%>
+                <details class="onGoingDetails">
+                    <summary <% if(typeof problems[i].requestCompletedFixer != 'undefined' && problems[i].requestCompletedFixer == true) {%> style="color: green;" <% } %> >
+                        <%=problems[i].summary%>
+                            -
+                            <%=problems[i]._id%>
+                    </summary>
+                    <p>
+                        Description:
+                        <%=problems[i].description%>
+                    </p>
+                    <p>
+                        Address:
+                        <%=JSON.stringify(problems[i].address)%>
+                    </p>
+                    <p>
+                        Phone:
+                        <%=problems[i].phone%>
+                    </p>
+                    <p>
+                        Type:
+                        <%=problems[i].type%>
+                    </p>
+                    <p>
+                        Fixer:
+                        <%=problems[i].fixer%>
+                    </p>
+                    <p>
+                        Deadline:
+                        <%=problems[i].deadline%>
+                    </p>
+                    <form action="/problem/<%= problems[i]._id %>" method="get">
+                        <input type='submit' value='Details' />
+                    </form>
+                </details>
+                <div class="onGoingOptions">
+                </div>
+                <%}}%>
+    </div>
+    <div class="priorityGreen">
+        <img class="backgroundImg" src="/img/rectangle.png"/>
+        <h1>
+            Green
+        </h1>
+        <%for (var i = 0; i < problems.length; i ++) {%>
+            <%if(problems[i].status === 'onGoing' && problems[i].priority === 'green') {%>
+                <details class="onGoingDetails">
+                    <summary <% if(typeof problems[i].requestCompletedFixer != 'undefined' && problems[i].requestCompletedFixer == true) {%> style="color: green;" <% } %> >
+                        <%=problems[i].summary%>
+                            -
+                            <%=problems[i]._id%>
+                    </summary>
+                    <p>
+                        Description:
+                        <%=problems[i].description%>
+                    </p>
+                    <p>
+                        Address:
+                        <%=JSON.stringify(problems[i].address)%>
+                    </p>
+                    <p>
+                        Phone:
+                        <%=problems[i].phone%>
+                    </p>
+                    <p>
+                        Type:
+                        <%=problems[i].type%>
+                    </p>
+                    <p>
+                        Fixer:
+                        <%=problems[i].fixer%>
+                    </p>
+                    <p>
+                        Deadline:
+                        <%=problems[i].deadline%>
+                    </p>
+                    <form action="/problem/<%= problems[i]._id %>" method="get">
+                        <input type='submit' value='Details' />
+                    </form>
+                </details>
+                <div class="onGoingOptions">
+                </div>
+                <%}}%>
+    </div>
+    <div class="newAssigned">
+        <img class="backgroundImg" src="/img/rectangle.png"/>
+        <h1>
+            Assigned
+        </h1>
+        <div class="onSite">
+            <h2>
+                From site
+            </h2>
+            <%for (var i = 0; i < problems.length; i ++) {%>
+                <%if(problems[i].status === 'pending') {%>
+                    <details>
+                        <summary>
+                            <%=problems[i].summary%>
+                        </summary>
+                        <p>
+                            <%=problems[i]._id%>
+                        </p>
+                        <p>
+                            <%=problems[i].description%>
+                        </p>
+                        <p>
+                            <%=JSON.stringify(problems[i].address)%>
+                        </p>
+                        <p>
+                            <%=problems[i].phone%>
+                        </p>
+                        <form action="" method="post">
+                            <input name="id" type="hidden" value="<%=problems[i]._id%>" />
+                            <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
+                            <select name="type" required>
+                                <option value="option 1">Option 1</option>
+                                <option value="option 1">Option 2</option>
+                                <option value="option 1">Option 3</option>
+                                <option value="option 1">Option 4</option>
+                            </select><br/>
+                            <input name="fixer" type="email" placeholder="Fixer" required/><br/>
+                            <input name="deadline" type="date" required/><br/>
+                            <input name="priority" type="radio" value="green" checked />green<br/>
+                            <input name="priority" type="radio" value="yellow" />yellow<br/>
+                            <input name="priority" type="radio" value="red" />red<br/>
+                            <input name="update" type="text" placeholder="Anything to add" /><br/>
+                            <input type="submit" value="Save" />
+                        </form>
+                    </details>
+                <% } %>
+            <% } %>
+        </div>
+        <div class="onEmail">
+            <h2>
+                From email
+            </h2>
+             <%for (var i = 0; i < emailProblems.length; i ++) {%>
+                <details>
+                    <summary>
+                        <%=emailProblems[i].subject%>
+                    </summary>
+                    <p>
+                        <%=emailProblems[i].body%>
+                    </p>
+                    <form action='/auth/email/logProblem' method='post'>
+                        <input name="id" type="hidden" value="<%=emailProblems[i]._id%>" />
+                        <input name="clientEmail" type="hidden" value="<%=emailProblems[i].client%>" />
+                        <input name="clientFirstName" type="hidden" value="<%=emailProblems[i].clientFirstName%>" />
+                        <input type="text" name="summary" value="<%=emailProblems[i].subject%>" required/><br/>
+                        <textarea rows="7" name="description" required>
+                            <%=emailProblems[i].body%>
+                        </textarea><br/>
+                        <input type="text" name="addressLine1" placeholder="Street adress, P.O. box, company name, etc" /><br/>
+                        <input type="text" name="addressLine2" placeholder="Apartament, suite, unit, building, floor, etc" /><br/>
+                        <input type="text" name="city" placeholder="City" /><br/>
+                        <input type="text" name="state" placeholder="State" /><br/>
+                        <input type="text" name="zip" placeholder="Zip" /><br/>
+                        <input type="text" name="country" placeholder="Country" /><br/>
+                        <input type="tel" pattern='^\+?\d{0,13}' name="phone" placeholder="Phone number" /><br/>
+                        <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
+                        <select name="type" required>
+                            <option value="option 1">Option 1</option>
+                            <option value="option 1">Option 2</option>
+                            <option value="option 1">Option 3</option>
+                            <option value="option 1">Option 4</option>
+                        </select><br/>
+                        <input name="fixer" type="email" placeholder="Fixer" required/><br/>
+                        <input name="deadline" type="date" required/><br/>
+                        <input name="priority" type="radio" value="green" checked />green<br/>
+                        <input name="priority" type="radio" value="yellow" />yellow<br/>
+                        <input name="priority" type="radio" value="red" />red<br/>
+                        <input type="submit" value="Save" />
+                    </form>
+                </details>
+            <% } %>
+        </div>
+    </div>
+    <div class="lastUpdates">
+        <img class="backgroundImg" src="/img/rectangle.png"/>
+        <h1>
+            Last updates
+        </h1>
+        <% if(problems != null) { %>
+            <% problems.forEach(function(problem){ %>
+                <% if(problem.status !== 'completed') { %>
+                    <% if(updates[problem._id] != null && updates[problem._id].length > 0) { %>
+                        <form action="/problem/<%= problem._id %>" method="get">
+                            <input type='submit' value='<%= problem.summary %> (<%= problem._id %>)' />
+                        </form>
+                        <% updates[problem._id].sort(function(a, b) {return b.totalTime - a.totalTime;}); %>
+                        <% for(var i = 0; i < Math.min(2, updates[problem._id].length); i ++) {%>
+                            <p>
+                                <%= updates[problem._id][i].timestamp %> - <%= updates[problem._id][i].author %>: <%= updates[problem._id][i].update %>
+                            </p>
+                        <% } %>
+                    <% } %>
+                <% } %>
+            <% }); %>
+        <% } %>
+    </div>
+    <form id="completed" action="/auth/completed" method="get">
+        <input type="submit" value="Completed">
+    </form>
+</body>
+
+</html>

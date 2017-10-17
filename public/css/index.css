@@ -1,0 +1,77 @@
+body {
+    background-image: url(../img/LEJ9mSj.jpg);
+}
+
+.inForm {
+    position: absolute;
+    top: 3vh;
+    right: 4vw;
+    width: 20vw;
+    height: 37vh;
+}
+
+#backgroundImg {
+    position: absolute;
+    width: 20vw;
+    height: 37vh;
+    z-index: -1;
+}
+
+h1 {
+    color: #030324;
+    text-align: center;
+}
+
+h2 {
+    color: #030324;
+    display: inline-block;
+    text-align: center;
+    width: 9vw;
+    cursor: pointer;
+}
+
+h2:hover {
+    color: #030324;
+}
+
+form {
+    color: #030324;
+    position: absolute;
+    top: 17vh;
+    font-size: 1.27em;
+}
+
+form:nth-of-type(1) {
+    display: none;
+}
+
+form:nth-of-type(2) {
+    display: none;
+}
+
+#passResetButton {
+    top: 23.4vh;
+    margin-left: 7vw;
+}
+
+form>div {
+    width: 20vw;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+}
+
+form label {
+    display: inline-block;
+    width: 7vw;
+    max-width: 10vw;
+    margin-left: 1vw;
+}
+
+form input {
+    left: 8vw;
+    max-width: 10vw;
+}
+
+.submit {
+    margin-left: 15.3vw;
+}
