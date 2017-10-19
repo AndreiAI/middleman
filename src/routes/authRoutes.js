@@ -14,7 +14,7 @@ const https = require('https');
 
 var database = require('../controllers/database')();
 
-const recaptchaSecretKey = "6Lc82DQUAAAAACkiLWujYLGcxrRtl5SXp9BhPvgY";
+const recaptchaSecretKey = "6Lf51jQUAAAAAF1EDg68EEZvyr1pvb2O_Nj13k8l";
 const recaptchaURL = "https://www.google.com/recaptcha/api/siteverify";
 
 var mail = require('../controllers/mail');
