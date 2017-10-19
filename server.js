@@ -1,17 +1,26 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var passport = require('passport');
-var session = require('express-session');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const passport = require('passport');
+const session = require('express-session');
+
+const https = require('https');
+const fs = require('fs');
+
+//For SSL certificate
+const options = {
+    cert: fs.readFileSync('./sslcert/fullchain.pem'),
+    key: fs.readFileSync('./sslcert/privkey.pem')
+};
+
+const authRouter = require('./src/routes/authRoutes')();
+const problemRouter = require('./src/routes/problemRoutes')();
+
+const mail = require('./src/controllers/mail');
 
 var app = express();
 
 var port = process.env.PORT || 8000;
-
-var authRouter = require('./src/routes/authRoutes')();
-var problemRouter = require('./src/routes/problemRoutes')();
-
-var mail = require('./src/controllers/mail');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -45,5 +54,7 @@ app.get('/', function (req, res) {
 app.listen(port, function (err) {
     console.log('Running server on port: ' + port)
 });
+
+https.createServer(options, app).listen(8443);
 
 mail();
