@@ -63,6 +63,8 @@ var router = function () {
                 response.on('data', (data) => {
                     data = JSON.parse(data);
 
+                    console.log(data);
+
                     if (data.success) {
                         var user = {
                             firstName: req.body.firstName,
