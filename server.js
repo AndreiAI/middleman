@@ -39,15 +39,15 @@ app.use('/problem', problemRouter);
 
 app.get('/', function (req, res) {
     if (req.user && req.user.type === 'client') {
-        res.redirect('/auth/client');
+        res.redirect('https://solverly.io/auth/client');
     } else if (req.user && req.user.type === 'handler') {
-        res.redirect('/auth/profileHandler2');
+        res.redirect('https://solverly.io/auth/profileHandler2');
     } else if (req.user && req.user.type === 'fixer') {
-        res.redirect('/auth/profileFixer2');
+        res.redirect('https://solverly.io/auth/profileFixer2');
     } else if (req.user && req.user.type === 'admin') {
-        res.redirect('/auth/profileAdmin');
+        res.redirect('https://solverly.io/auth/profileAdmin');
     } else {
-        res.render('index2');
+        res.redirect('https://solverly.io/index2');
     }
 });
 
