@@ -188,6 +188,7 @@ var router = function () {
 
     authRouter.route('/passReset/:id')
         .get(function (req, res) {
+            console.log(req.params.id.length);
             if (req.params.id.length === 24) {
                 database.getUsers({
                     _id: objectId(req.params.id)
