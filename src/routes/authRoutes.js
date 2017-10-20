@@ -156,7 +156,7 @@ var router = function () {
                 if (results.length == 1) {
                     mailOptions.to = req.body.email;
                     mailOptions.subject = 'Password reset request'; // Subject line
-                    mailOptions.text = 'Hi,\n\nWe have received a request to change your password. Please click on the following link to complete the request:\n\nhttps://solverly.us-east-2.elasticbeanstalk.com/auth/passReset/' + results[0]._id + '\n\n You should receive an email containing the new password.'; // plain text body
+                    mailOptions.text = 'Hi,\n\nWe have received a request to change your password. Please click on the following link to complete the request:\n\nhttps://solverly.io/auth/passReset/' + results[0]._id + '\n\n You should receive an email containing the new password.'; // plain text body
 
                     transporter.sendMail(mailOptions, (error, info) => {
                         if (error) {
