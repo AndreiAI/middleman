@@ -209,8 +209,8 @@ var router = function () {
 
                         database.updateUser(results[0], function (response) {
                             if (response === true) {
-                                console.log("Response: ", response):
-                                    mailOptions.to = results[0].email;
+                                console.log("Response: ", response);
+                                mailOptions.to = results[0].email;
                                 mailOptions.subject = 'Password reset complete'; // Subject line
                                 mailOptions.text = 'Hi,\n\nYour password has been successfully reseted.\n\n New password: ' + newPass + '\n\n'; // plain text body
                                 transporter.sendMail(mailOptions, (error, info) => {
