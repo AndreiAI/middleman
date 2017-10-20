@@ -55,7 +55,7 @@ var mail = function () {
         secure: true, // true for 465, false for other ports
         auth: {
             user: 'problem@solverly.io',
-            pass: '8DDb&N49'
+            pass: 'NhL2R9%q'
         }
     });
 
