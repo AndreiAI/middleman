@@ -37,7 +37,7 @@ app.set('view engine', 'ejs');
 app.use('/auth', authRouter);
 app.use('/problem', problemRouter);
 
-app.get('http://solverly.io/', function (req, res) {
+app.get('/', function (req, res) {
     if (req.user && req.user.type === 'client') {
         res.redirect('https://solverly.io/auth/client');
     } else if (req.user && req.user.type === 'handler') {
@@ -47,23 +47,13 @@ app.get('http://solverly.io/', function (req, res) {
     } else if (req.user && req.user.type === 'admin') {
         res.redirect('https://solverly.io/auth/profileAdmin');
     } else {
-        res.redirect('https://solverly.io/');
+        if (req.connection.encrypted) {
+            res.render('index2');
+        } else {
+            res.redirect('https://solverly.io/');
+        }
     }
 });
-
-app.get('https://solverly.io/', function (req, res) {
-    if (req.user && req.user.type === 'client') {
-        res.redirect('https://solverly.io/auth/client');
-    } else if (req.user && req.user.type === 'handler') {
-        res.redirect('https://solverly.io/auth/profileHandler2');
-    } else if (req.user && req.user.type === 'fixer') {
-        res.redirect('https://solverly.io/auth/profileFixer2');
-    } else if (req.user && req.user.type === 'admin') {
-        res.redirect('https://solverly.io/auth/profileAdmin');
-    } else {
-        res.render('index2');
-    }
-})
 
 app.listen(port, function (err) {
     console.log('Running server on port: ' + port)
