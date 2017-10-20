@@ -87,6 +87,9 @@
                             <p><%=results[i].email%></p>
                         </div>
                     <%}%>
+                    <form id="logOut" action="/auth/logOut" method="post">
+                        <input type="submit" value="Log out">
+                    </form>
                 </div>
             </div>
         </div>
