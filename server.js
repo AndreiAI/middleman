@@ -51,7 +51,7 @@ app.get('http://solverly.io', function (req, res) {
     }
 });
 
-app.get('https://solverly.io', function (req, res) {
+app.get('/', function (req, res) {
     if (req.user && req.user.type === 'client') {
         res.redirect('https://solverly.io/auth/client');
     } else if (req.user && req.user.type === 'handler') {
