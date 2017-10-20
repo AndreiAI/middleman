@@ -47,7 +47,8 @@ app.get('/', function (req, res) {
     } else if (req.user && req.user.type === 'admin') {
         res.redirect('https://solverly.io/auth/profileAdmin');
     } else {
-        res.redirect('https://solverly.io/index2');
+        res.redirect('https://solverly.io/');
+        res.render('index2');
     }
 });
 
