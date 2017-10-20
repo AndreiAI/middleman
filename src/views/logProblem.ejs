@@ -18,6 +18,14 @@
             console.log("Form submit");
             document.getElementById("formID").submit();
         }
+        
+        function displayPrompt() {
+            if(confirm("Are you sure you want to go back?")) {
+                document.getElemenyById("backButton").submit();
+            } else {
+                
+            }
+        }
     </script>
 </head>
 
@@ -45,6 +53,11 @@
             </button>
         </form>
     </div>
+    <form id="backButton" action="/" method="get">
+        <button onclick="displayPrompt();">
+            Back
+        </button>
+    </form>
 </body>
 <script src='/js/logProblem.js'></script>
 </html>
