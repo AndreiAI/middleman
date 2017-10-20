@@ -14,6 +14,13 @@
     <script src='/js/index.js' ></script>
 
     <title>Solverly</title>
+    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+    <script>
+        function    captchaSubmit(data) {
+            console.log("Form submit");
+            document.getElementById("signUpForm").submit();
+        }
+    </script>
 </head>
 
 <body>
@@ -64,9 +71,12 @@
                     <label>Confirm</label>
                     <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
                 </div>
-                <div>
-                    <input class="submit" type="submit" value="Sign up">
-                </div>
+                <button
+                    class="g-recaptcha"
+                    data-sitekey="6Lf51jQUAAAAAF1EDg68EEZvyr1pvb2O_Nj13k8l"
+                    data-callback="captchaSubmit">
+                Sign Up
+                </button>
             </form>
         </div>
     </div>
