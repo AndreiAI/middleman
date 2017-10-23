@@ -157,34 +157,32 @@ var router = function () {
             //Stuff changed
             req.body.update = "Marked as completed by: " + req.user.type + ".";
 
-            var userIP = req.connection.remoteAddress;
-
-            var postData = querystring.stringify({
-                req: req
+            var data = querystring.stringify({
+                body: {
+                    update: yourUsernameValue
+                }
             });
 
             var options = {
-                hostname: 'solverly.io',
-                port: 80,
-                path: '/problem/complete/' + req.params.id,
+                host: 'solverly.io',
+                port: 443,
+                path: '/problem/' + req.params.id,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Content-Length': postData.length
+                    'Content-Length': Buffer.byteLength(data)
                 }
             };
 
-            var request = http.request(options, (response) => {
-                console.log('statusCode:', response.statusCode);
-                console.log('headers:', response.headers);
-
-                response.on('data', function (data) {
-                    console.log(data);
+            var req = https.request(options, function (res) {
+                res.setEncoding('utf8');
+                res.on('data', function (chunk) {
+                    console.log("body: " + chunk);
                 });
             });
 
-            request.write(postData);
-            request.end();
+            req.write(data);
+            req.end();
 
             //End stuff changed
 
