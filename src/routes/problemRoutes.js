@@ -148,6 +148,36 @@ var router = function () {
             }
         })
         .post(function (req, res) {
+            //Stuff changed
+            req.body.update = "Marked as completed by: " + req.user.type + ".";
+
+            var userIP = req.connection.remoteAddress;
+
+            var postData = querystring.stringify({
+                req: req
+            });
+
+            var options = {
+                hostname: 'solverly.io',
+                port: 443,
+                path: '/problem/complete/' + req.params.id,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Length': postData.length
+                }
+            };
+
+            var request = https.request(options, (response) => {
+                console.log('statusCode:', response.statusCode);
+                console.log('headers:', response.headers);
+            });
+
+            request.write(postData);
+            request.end();
+
+            //End stuff changed
+
             if (req.user.type == 'handler') {
                 database.getProblems({
                     _id: objectId(req.params.id)
