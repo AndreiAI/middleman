@@ -121,7 +121,7 @@ var router = function () {
                     console.log("Results:", results);
                     if (results.length == 1 && results[0].confirmed == false) {
                         console.log("Before confirmed:", results[0]);
-                        results[0].confirmed == true;
+                        results[0].confirmed = true;
                         console.log("After confirmed:", results[0]);
 
                         database.updateUser(results[0], function (response) {
@@ -238,7 +238,7 @@ var router = function () {
                 }, function (results) {
                     console.log("Results:", results);
                     if (results.length == 1 && results[0].requestResetPass && results[0].requestResetPass === true) {
-                        results[0].requestResetPass == false;
+                        results[0].requestResetPass = false;
 
                         var newPass = '';
                         //48 -> 122
