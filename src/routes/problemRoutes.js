@@ -16,6 +16,14 @@ var router = function () {
         .all(function (req, res, next) {
             console.log(req);
             console.log("USER", req.user);
+
+            if (req.user === undefined && req.body.user !== undefined) {
+                req.user.email = req.body.user.email;
+                req.user.type = req.body.user.type;
+            }
+
+            console.log("USER", req.user);
+
             if (req.params.id.length === 24) {
                 database.getProblems({
                     _id: objectId(req.params.id)
@@ -161,7 +169,8 @@ var router = function () {
 
             var data = querystring.stringify({
                 update: "Marked as completed by: " + req.user.type + ".",
-                user: req.user
+                type: req.user.type,
+                email: req.user.email
             });
 
             var options = {
