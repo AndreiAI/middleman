@@ -18,8 +18,8 @@ var router = function () {
             console.log("USER", req.user);
 
             if (req.user === undefined && req.body.user !== undefined) {
-                req.user.email = req.body.user.email;
-                req.user.type = req.body.user.type;
+                req.user.email = req.body.email;
+                req.user.type = req.body.type;
             }
 
             console.log("USER", req.user);
