@@ -6,6 +6,7 @@ var passport = require('passport');
 
 const querystring = require('querystring');
 const https = require('https');
+const http = require('http');
 
 
 var database = require('../controllers/database')();
@@ -159,13 +160,12 @@ var router = function () {
             var userIP = req.connection.remoteAddress;
 
             var postData = querystring.stringify({
-                user: req.user,
-                body: req.body.update
+                req: req
             });
 
             var options = {
                 hostname: 'solverly.io',
-                port: 443,
+                port: 80,
                 path: '/problem/complete/' + req.params.id,
                 method: 'POST',
                 headers: {
@@ -174,7 +174,7 @@ var router = function () {
                 }
             };
 
-            var request = https.request(options, (response) => {
+            var request = http.request(options, (response) => {
                 console.log('statusCode:', response.statusCode);
                 console.log('headers:', response.headers);
 
