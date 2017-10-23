@@ -155,11 +155,10 @@ var router = function () {
         })
         .post(function (req, res) {
             //Stuff changed
-            req.body.update = "Marked as completed by: " + req.user.type + ".";
 
             var data = querystring.stringify({
                 body: {
-                    update: yourUsernameValue
+                    update: "Marked as completed by: " + req.user.type + "."
                 }
             });
 
