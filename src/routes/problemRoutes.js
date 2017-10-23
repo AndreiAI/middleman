@@ -14,6 +14,7 @@ var database = require('../controllers/database')();
 var router = function () {
     problemRouter.route('/:id')
         .all(function (req, res, next) {
+            console.log(req);
             if (req.params.id.length === 24) {
                 database.getProblems({
                     _id: objectId(req.params.id)
