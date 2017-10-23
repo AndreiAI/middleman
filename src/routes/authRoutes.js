@@ -67,12 +67,26 @@ var router = function () {
 
                     if (data.success) {
                         var user = {
+                            _id: objectId(),
                             firstName: req.body.firstName,
                             lastName: req.body.lastName,
                             email: req.body.email.toLowerCase(),
                             password: req.body.password,
-                            type: 'client'
+                            type: 'client',
+                            confirmed: false
                         }
+
+                        mailOptions.to = user.email;
+                        mailOptions.subject = 'User confirmation'; // Subject line
+                        mailOptions.text = 'Hi,\n\nYour email was used to create an account on https://solverly.io. Please click on the following link to complete the registration:\n\nhttps://solverly.io/auth/confirmRegistration/' + user._id + '\n\n If this was not you, please ignore.'; // plain text body
+
+                        transporter.sendMail(mailOptions, (error, info) => {
+                            if (error) {
+                                return console.log(error);
+                            }
+                            console.log('Message sent: %s', info);
+                            console.log(mailOptions.subject);
+                        });
 
                         database.saveUser(user, function (response) {
                             if (response === true) {
@@ -95,6 +109,33 @@ var router = function () {
 
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+        });
+
+    authRouter.route('/confirmRegistration/:id')
+        .get(function (req, res) {
+            console.log(req.params.id.length);
+            if (req.params.id.length === 24) {
+                database.getUsers({
+                    _id: objectId(req.params.id)
+                }, function (results) {
+                    console.log("Results:", results);
+                    if (results.length == 1 && results[0].confirmed == false) {
+                        results[0].confirmed == true;
+
+                        database.updateUser(results[0], function (response) {
+                            if (response === true) {
+                                console.log('Confirmed user:', results[0]);
+                            } else {
+                                console.log('Something went wrong updating the user:', results[0]);
+                            }
+                        });
+                    }
+
+                    res.redirect('/');
+                });
+            } else {
+                res.redirect('/');
+            }
         });
 
     authRouter.route('/signUpHandler')
