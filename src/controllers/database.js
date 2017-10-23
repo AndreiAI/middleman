@@ -44,12 +44,9 @@ var database = function () {
     };
 
     var updateUser = function (user, callback) {
-        console.log('before', user);
         if (typeof user.password != 'undefined' && user.updatePassword && user.updatePassword == true) {
             user.password = crypto.createHmac('sha256', key).update(user.password).digest('hex');
         }
-        console.log('after', user);
-
         delete user._id;
 
         mongodb.connect(url, function (err, db) {

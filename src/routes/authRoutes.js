@@ -120,7 +120,9 @@ var router = function () {
                 }, function (results) {
                     console.log("Results:", results);
                     if (results.length == 1 && results[0].confirmed == false) {
+                        console.log("Before confirmed:", results[0]);
                         results[0].confirmed == true;
+                        console.log("After confirmed:", results[0]);
 
                         database.updateUser(results[0], function (response) {
                             if (response === true) {
