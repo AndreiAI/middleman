@@ -84,7 +84,8 @@ var mail = function () {
                         password: 'pass',
                         firstName: mail.from[0].name.split(' ')[0],
                         secondName: mail.from[0].name.split(' ')[1],
-                        type: 'client'
+                        type: 'client',
+                        confirmed: true
                     }, function (response) {
                         if (response === false) {
                             console.log('We could not sign up: ' + mail.from[0].address);
