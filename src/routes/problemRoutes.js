@@ -173,15 +173,15 @@ var router = function () {
                 }
             };
 
-            var req = https.request(options, function (res) {
+            var request = https.request(options, function (res) {
                 res.setEncoding('utf8');
                 res.on('data', function (chunk) {
                     console.log("body: " + chunk);
                 });
             });
 
-            req.write(data);
-            req.end();
+            request.write(data);
+            request.end();
 
             //End stuff changed
 
