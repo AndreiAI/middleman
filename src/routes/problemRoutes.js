@@ -92,36 +92,36 @@ var router = function () {
                 var len = (String(base || 10).length - String(this).length) + 1;
                 return len > 0 ? new Array(len).join(chr || '0') + this : this;
             }
+            /*
+                        var total = Date.now();
 
-            var total = Date.now();
+                        var d = new Date,
+                            dformat = [(d.getMonth() + 1).padLeft(),
+                           d.getDate().padLeft(),
+                           d.getFullYear()].join('/') + ' ' + [d.getHours().padLeft(),
+                           d.getMinutes().padLeft(),
+                           d.getSeconds().padLeft()].join(':');
+                        var update = {
+                            problemID: req.params.id,
+                            timestamp: dformat,
+                            totalTime: total,
+                            author: req.user.email,
+                            authorFirstName: req.user.firstName,
+                            update: req.body.update
+                        }
 
-            var d = new Date,
-                dformat = [(d.getMonth() + 1).padLeft(),
-               d.getDate().padLeft(),
-               d.getFullYear()].join('/') + ' ' + [d.getHours().padLeft(),
-               d.getMinutes().padLeft(),
-               d.getSeconds().padLeft()].join(':');
-            var update = {
-                problemID: req.params.id,
-                timestamp: dformat,
-                totalTime: total,
-                author: req.user.email,
-                authorFirstName: req.user.firstName,
-                update: req.body.update
-            }
-
-            database.saveUpdate(update, function (response) {
-                if (response === false) {
-                    console.log('There was a problem with your update');
-                } else {
-                    if (req.body.backPath) {
-                        console.log(req.params.id);
-                        res.redirect(req.body.backPath);
-                    } else {
-                        res.redirect('' + req.params.id);
-                    }
-                }
-            });
+                        database.saveUpdate(update, function (response) {
+                            if (response === false) {
+                                console.log('There was a problem with your update');
+                            } else {
+                                if (req.body.backPath) {
+                                    console.log(req.params.id);
+                                    res.redirect(req.body.backPath);
+                                } else {
+                                    res.redirect('' + req.params.id);
+                                }
+                            }
+                        });*/
         });
 
     problemRouter.route('/complete/:id')
