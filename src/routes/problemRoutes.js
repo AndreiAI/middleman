@@ -160,7 +160,8 @@ var router = function () {
             //Stuff changed
 
             var data = querystring.stringify({
-                update: "Marked as completed by: " + req.user.type + "."
+                update: "Marked as completed by: " + req.user.type + ".",
+                user: req.user
             });
 
             var options = {
