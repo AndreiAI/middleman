@@ -4,6 +4,10 @@ var mongodb = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var passport = require('passport');
 
+const querystring = require('querystring');
+const https = require('https');
+
+
 var database = require('../controllers/database')();
 
 var router = function () {
