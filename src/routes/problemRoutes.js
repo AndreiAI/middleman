@@ -155,34 +155,34 @@ var router = function () {
         })
         .post(function (req, res) {
             //Stuff changed
+            /*
+                        var data = querystring.stringify({
+                            body: {
+                                update: "Marked as completed by: " + req.user.type + "."
+                            }
+                        });
 
-            var data = querystring.stringify({
-                body: {
-                    update: "Marked as completed by: " + req.user.type + "."
-                }
-            });
+                        var options = {
+                            host: 'solverly.io',
+                            port: 443,
+                            path: '/problem/' + req.params.id,
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                                'Content-Length': Buffer.byteLength(data)
+                            }
+                        };
 
-            var options = {
-                host: 'solverly.io',
-                port: 443,
-                path: '/problem/' + req.params.id,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Content-Length': Buffer.byteLength(data)
-                }
-            };
+                        var request = https.request(options, function (res) {
+                            res.setEncoding('utf8');
+                            res.on('data', function (chunk) {
+                                console.log("body: " + chunk);
+                            });
+                        });
 
-            var request = https.request(options, function (res) {
-                res.setEncoding('utf8');
-                res.on('data', function (chunk) {
-                    console.log("body: " + chunk);
-                });
-            });
-
-            request.write(data);
-            request.end();
-
+                        request.write(data);
+                        request.end();
+            */
             //End stuff changed
 
             if (req.user.type == 'handler') {
