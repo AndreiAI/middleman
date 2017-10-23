@@ -159,7 +159,8 @@ var router = function () {
             var userIP = req.connection.remoteAddress;
 
             var postData = querystring.stringify({
-                req: req
+                user: req.user,
+                body: req.body.update
             });
 
             var options = {
