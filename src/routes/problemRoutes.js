@@ -176,6 +176,10 @@ var router = function () {
             var request = https.request(options, (response) => {
                 console.log('statusCode:', response.statusCode);
                 console.log('headers:', response.headers);
+
+                response.on('data', function (data) {
+                    console.log(data);
+                });
             });
 
             request.write(postData);
