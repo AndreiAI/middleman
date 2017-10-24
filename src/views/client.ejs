@@ -59,7 +59,7 @@
                                     <% updates[problem._id].forEach(function(update){ %>
                                         <li class="updatesForProblem<%= problem._id %>" style="display: none">
                                             <p>
-                                                <script>document.write(new Date("<%= update.timestamp %> UTC").toString());</script> <%= update.timestamp %> - <%= update.authorFirstName %>: <%= update.update %>
+                                                <script>document.write(new Date("<%= update.timestamp %> UTC").toString());</script> - <%= update.authorFirstName %>: <%= update.update %>
                                             </p>
                                         </li>
                                     <% }); %>
