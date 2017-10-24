@@ -51,7 +51,7 @@
             <div class="updatesList">
                 <% for(var i = 0; i < result.updates.length; i ++) { %>
                     <p>
-                        <%= result.updates[i].timestamp %> - <%= result.updates[i].authorFirstName %>: <%= result.updates[i].update %>
+                         <script>document.write(new Date("<%= result.updates[i].timestamp %> UTC").toString().split("GMT")[0]);</script> - <%= result.updates[i].authorFirstName %>: <%= result.updates[i].update %>
                     </p>
                 <% } %>
             </div>

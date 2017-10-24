@@ -168,7 +168,7 @@
                         <% updates[problem._id].sort(function(a, b) {return b.totalTime - a.totalTime;}); %>
                         <% for(var i = 0; i < Math.min(2, updates[problem._id].length); i ++) {%>
                             <p>
-                                <%= updates[problem._id][i].timestamp %> - <%= updates[problem._id][i].author %>: <%= updates[problem._id][i].update %>
+                                <script>document.write(new Date("<%= updates[problem._id][i].timestamp %> UTC").toString().split("GMT")[0]);</script> - <%= updates[problem._id][i].authorFirstName %>: <%= updates[problem._id][i].update %>
                             </p>
                         <% } %>
                     <% } %>

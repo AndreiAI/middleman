@@ -55,7 +55,7 @@
                                 <% updates[problem._id].forEach(function(update){ %>
                                     <li class="updatesForProblem<%= problem._id %>" style="display: none">
                                         <p>
-                                            <%= update.timestamp %> - <%= update.author %>: <%= update.update %>
+                                             <script>document.write(new Date("<%= update.timestamp %> UTC").toString().split("GMT")[0]);</script> - <%= update.authorFirstName %>: <%= update.update %>
                                         </p>
                                     </li>
                                 <% }); %>
