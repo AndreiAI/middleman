@@ -136,7 +136,6 @@ var mail = function () {
                 });
             });
         } else if (mail.subject !== undefined && mail.subject.includes('PROBLEM') && mail.subject.split('PROBLEM')[1].length === 24) {
-            var updateText = mail.text.split('CHAT')[1].split('\n')[1];
 
             Number.prototype.padLeft = function (base, chr) {
                 var len = (String(base || 10).length - String(this).length) + 1;
@@ -158,7 +157,7 @@ var mail = function () {
                 totalTime: total,
                 author: mail.from[0].address,
                 authorFirstName: mail.from[0].name.split(' ')[0],
-                update: updateText
+                update: mail.text
             }
 
             database.saveUpdate(update, function (response) {
