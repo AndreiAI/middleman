@@ -121,7 +121,7 @@ var mail = function () {
                             database.saveEmailProblem(emailProblem, function (result) {
                                 mailOptions.to = mail.from[0].address;
                                 mailOptions.subject = 'PROBLEM' + result._id;
-                                mailOptions.text += 'Your problem has been received and has been assigned to ' + emailProblem.handlerFirstName + '. He will be giving you feedback along the way. \n\nMeanwhile, you can log in at example.com\n\nTo use the commands, write the keyword as the first word in your message, on the first line (the keyword needs to be unique on the first line), when replying to this email:\nCHAT : write a new update. Write your update without pressing ENTER\nGET-CHAT : get all past updates\n\n' + endSeq;
+                                mailOptions.text += 'Your problem has been received and has been assigned to ' + emailProblem.handlerFirstName + '. He will be giving you feedback along the way. \n\nMeanwhile, you can log in at example.com\n\nTo use the commands, write the keywords:\n#chat : get all past updates\n#update : Sends an email to the handler and the fixer, asking for an update\n\nTo write a new message in the chat, you can just reply to this email\n\n' + endSeq;
 
                                 transporter.sendMail(mailOptions, (error, info) => {
                                     if (error) {
