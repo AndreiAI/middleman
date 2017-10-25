@@ -194,6 +194,7 @@ var mail = function () {
                 database.getProblems({
                     _id: objectId(mail.subject.split('PROBLEM')[1])
                 }, function (problemsResults) {
+                    console.log(problemsResults[0]);
                     mailOptions.to = problemsResults[0].fixer + "; " + problemsResults[0].handler;
                     mailOptions.subject = 'PROBLEM' + mail.subject.split('PROBLEM')[1];
                     mailOptions.text = 'The client has request an update.\n\n';
