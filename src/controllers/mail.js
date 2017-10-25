@@ -68,10 +68,7 @@ var mail = function () {
         console.log("Email received:", mail.date, mail.from[0].address, mail.subject);
 
         let mailOptions = {
-            from: '"SOLVERLY" <problem@solverly.io>', // sender address
-            to: mail.from[0].address, // list of receivers
-            subject: '', // Subject line
-            text: '', // plain text body
+            from: '"SOLVERLY" <problem@solverly.io>' // sender address
         };
 
         if (mail.subject.includes('PROBLEM') == false) {
@@ -97,6 +94,7 @@ var mail = function () {
                     console.log(mail.from);
 
                     mailOptions.subject = 'Welcome to Solverly!';
+                    mailOptions.to = mail.from[0].address;
                     mailOptions.text = 'We got your problem and we are working on solving it.\n\nHere are you credentials:\n\nemail: ' + mail.from[0].address + '\npassword: ' + 'pass' + '\n\n';
                     /*
                                         transporter.sendMail(mailOptions, (error, info) => {
@@ -121,6 +119,7 @@ var mail = function () {
                             }
 
                             database.saveEmailProblem(emailProblem, function (result) {
+                                mailOptions.to = mail.from[0].address;
                                 mailOptions.subject = 'PROBLEM' + result._id;
                                 mailOptions.text += 'Your problem has been received and has been assigned to ' + emailProblem.handlerFirstName + '. He will be giving you feedback along the way. \n\nMeanwhile, you can log in at example.com\n\nTo use the commands, write the keyword as the first word in your message, on the first line (the keyword needs to be unique on the first line), when replying to this email:\nCHAT : write a new update. Write your update without pressing ENTER\nGET-CHAT : get all past updates\n\n' + endSeq;
 
@@ -136,58 +135,45 @@ var mail = function () {
                     });
                 });
             });
-        } else if (mail.subject.includes('PROBLEM') && mail.subject.split('PROBLEM')[1].length === 24) {
-            //to be deleted
-            /*
-            mailOptions.subject = 'PROBLEM' + mail.subject.split('PROBLEM')[1];
-            mailOptions.text = 'You have just replied to one of our messages.';
+        } else if (mail.subject !== undefined && mail.subject.includes('PROBLEM') && mail.subject.split('PROBLEM')[1].length === 24) {
+            var updateText = mail.text.split('CHAT')[1].split('\n')[1];
 
-            transporter.sendMail(mailOptions, (error, info) => {
-                if (error) {
-                    return console.log(error);
-                }
-                console.log('Message sent: %s', info);
-                console.log(mailOptions.subject);
-            });*/
+            Number.prototype.padLeft = function (base, chr) {
+                var len = (String(base || 10).length - String(this).length) + 1;
+                return len > 0 ? new Array(len).join(chr || '0') + this : this;
+            }
 
-            if (mail.text.split('\n')[0] == 'CHAT') {
+            var total = Date.now();
 
-                var updateText = mail.text.split('CHAT')[1].split('\n')[1];
-
-                Number.prototype.padLeft = function (base, chr) {
-                    var len = (String(base || 10).length - String(this).length) + 1;
-                    return len > 0 ? new Array(len).join(chr || '0') + this : this;
-                }
-
-                var total = Date.now();
-
-                var d = new Date,
-                    dformat = [(d.getMonth() + 1).padLeft(),
+            var d = new Date,
+                dformat = [(d.getMonth() + 1).padLeft(),
                d.getDate().padLeft(),
                d.getFullYear()].join('/') + ' ' + [d.getHours().padLeft(),
                d.getMinutes().padLeft(),
                d.getSeconds().padLeft()].join(':');
 
-                var update = {
-                    problemID: mail.subject.split('PROBLEM')[1],
-                    timestamp: dformat,
-                    totalTime: total,
-                    author: mail.from[0].address,
-                    authorFirstName: mail.from[0].name.split(' ')[0],
-                    update: updateText
-                }
+            var update = {
+                problemID: mail.subject.split('PROBLEM')[1],
+                timestamp: dformat,
+                totalTime: total,
+                author: mail.from[0].address,
+                authorFirstName: mail.from[0].name.split(' ')[0],
+                update: updateText
+            }
 
-                database.saveUpdate(update, function (response) {
-                    if (response === false) {
-                        console.log('There was a problem with your update');
-                    } else {
-                        console.log('Update saved: ' + update.update);
-                    }
-                });
-            } else if (mail.text.split('\n')[0] == 'GET-CHAT') {
+            database.saveUpdate(update, function (response) {
+                if (response === false) {
+                    console.log('There was a problem with your update');
+                } else {
+                    console.log('Update saved: ' + update.update);
+                }
+            });
+
+            if (mail.text !== undefined && mail.text.includes('#chat')) {
                 database.getUpdates({
                     problemID: mail.subject.split('PROBLEM')[1]
                 }, function (updatesResults) {
+                    mailOptions.to = mail.from[0].address;
                     mailOptions.subject = 'PROBLEM' + mail.subject.split('PROBLEM')[1];
                     mailOptions.text = 'Updates:\n\n';
                     updatesResults.forEach(function (update) {
@@ -202,11 +188,32 @@ var mail = function () {
                         console.log(mailOptions.subject);
                     });
                 });
-            } else if (mail.text.split('\n')[0] == 'COMPLETED') {
+            }
+
+            if (mail.text !== undefined && mail.text.includes('#update')) {
+                database.getProblems({
+                    _id: objectId(mail.subject.split('PROBLEM')[1])
+                }, function (problemsResults) {
+                    mailOptions.to = problemsResults[0].fixer + "; " + problemsResults[0].handler;
+                    mailOptions.subject = 'PROBLEM' + mail.subject.split('PROBLEM')[1];
+                    mailOptions.text = 'The client has request an update.\n\n';
+
+                    transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        console.log('Message sent: %s', info);
+                        console.log(mailOptions.subject);
+                    });
+                });
+            }
+
+            if (mail.text !== undefined && mail.text.includes('#solved')) {
                 database.getProblems({
                     _id: objectId(mail.subject.split('PROBLEM')[1])
                 }, function (results) {
                     //console.log(results);
+                    //Need to check if by fixer or handler or user
                     results[0].status = 'completed'
                     database.updateProblem(mail.subject.split('PROBLEM')[1], results[0], function (response) {
                         if (response === false) {
