@@ -25,7 +25,7 @@ var mailListener = new MailListener({
 
 var database = require('../controllers/database')();
 
-var google_separator = new RegExp('(On .*SOLVERLY <problem@solverly.io> wrote:)');
+var google_separator = new RegExp('(On .*> wrote:)');
 var separator = '~~~~~~~~~~~~~~~~~~~~~~~~Reply above~~~~~~~~~~~~~~~~~~~~~~~~';
 
 // start listening
