@@ -25,7 +25,7 @@ var mailListener = new MailListener({
 
 var database = require('../controllers/database')();
 
-var endSeq = 'End of mail.';
+var separator = '~~~~~~~~~~~~~~~~~~~~~~~~Reply above~~~~~~~~~~~~~~~~~~~~~~~~';
 
 // start listening
 var mail = function () {
@@ -71,6 +71,8 @@ var mail = function () {
             from: '"SOLVERLY" <problem@solverly.io>' // sender address
         };
 
+        mail.text = mail.text.split(separator)[0];
+
         if (mail.subject.includes('PROBLEM') == false) {
             database.getUsers({
                 email: mail.from[0].address.toLowerCase()
@@ -95,15 +97,15 @@ var mail = function () {
 
                     mailOptions.subject = 'Welcome to Solverly!';
                     mailOptions.to = mail.from[0].address;
-                    mailOptions.text = 'We got your problem and we are working on solving it.\n\nHere are you credentials:\n\nemail: ' + mail.from[0].address + '\npassword: ' + 'pass' + '\n\n';
-                    /*
-                                        transporter.sendMail(mailOptions, (error, info) => {
-                                            if (error) {
-                                                return console.log(error);
-                                            }
-                                            console.log('Message sent: %s', info.messageId);
-                                            console.log(mailOptions.subject);
-                                        });*/
+                    mailOptions.text = 'We got your problem and we are working on solving it. You should receive an email soon regarding your problem.\n\nHere are you credentials:\n\nemail: ' + mail.from[0].address + '\npassword: ' + 'pass' + '\n\n';
+
+                    transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        console.log('Message sent: %s', info.messageId);
+                        console.log(mailOptions.subject);
+                    });
                 }
 
                 database.getHandlers(function (resultsHandlers) {
@@ -121,7 +123,8 @@ var mail = function () {
                             database.saveEmailProblem(emailProblem, function (result) {
                                 mailOptions.to = mail.from[0].address;
                                 mailOptions.subject = 'PROBLEM' + result._id;
-                                mailOptions.text += 'Your problem has been received and has been assigned to ' + emailProblem.handlerFirstName + '. He will be giving you feedback along the way. \n\nMeanwhile, you can log in at example.com\n\nTo use the commands, write the keywords:\n#chat : get all past updates\n#update : Sends an email to the handler and the fixer, asking for an update\n\nTo write a new message in the chat, you can just reply to this email\n\n' + endSeq;
+                                mailOptions.text = separator + "\n\n";
+                                mailOptions.text += 'Your problem has been received and has been assigned to ' + emailProblem.handlerFirstName + '. He will be giving you feedback along the way. \n\nMeanwhile, you can log in at example.com\n\nTo use the commands, write the keywords:\n#chat : get all past updates\n#update : Sends an email to the handler and the fixer, asking for an update\n\nTo write a new message in the chat, you can just reply to this email\n\n';
 
                                 transporter.sendMail(mailOptions, (error, info) => {
                                     if (error) {
