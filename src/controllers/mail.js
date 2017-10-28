@@ -124,7 +124,7 @@ var mail = function () {
                                 mailOptions.to = mail.from[0].address;
                                 mailOptions.subject = 'PROBLEM' + result._id;
                                 mailOptions.text = separator + "\n\n";
-                                mailOptions.text += 'Your problem has been received and has been assigned to ' + emailProblem.handlerFirstName + '. He will be giving you feedback along the way. \n\nMeanwhile, you can log in at example.com\n\nTo use the commands, write the keywords:\n#chat : get all past updates\n#update : Sends an email to the handler and the fixer, asking for an update\n\nTo write a new message in the chat, you can just reply to this email\n\n';
+                                mailOptions.text += 'Your problem has been received and has been assigned to ' + emailProblem.handlerFirstName + '. He will be giving you feedback along the way. \n\nMeanwhile, you can log in at https://solverly.io\n\nTo use the commands, write the keywords:\n#chat : get all past updates\n#update : Sends an email to the handler and the fixer, asking for an update\n\nTo write a new message in the chat, you can just reply to this email\n\n';
 
                                 transporter.sendMail(mailOptions, (error, info) => {
                                     if (error) {
