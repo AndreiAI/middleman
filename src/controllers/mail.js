@@ -196,7 +196,7 @@ var mail = function () {
                     console.log(problemsResults[0]);
                     mailOptions.to = problemsResults[0].fixer + "; " + problemsResults[0].handler;
                     mailOptions.subject = 'PROBLEM' + mail.subject.split('PROBLEM')[1];
-                    mailOptions.text = 'The client has request an update.\n\n';
+                    mailOptions.text = 'The client has requested an update.\n\n';
 
                     transporter.sendMail(mailOptions, (error, info) => {
                         if (error) {
