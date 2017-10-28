@@ -25,6 +25,7 @@ var mailListener = new MailListener({
 
 var database = require('../controllers/database')();
 
+var google_separator = new RegExp('(On .*SOLVERLY <problem@solverly.io> wrote:)');
 var separator = '~~~~~~~~~~~~~~~~~~~~~~~~Reply above~~~~~~~~~~~~~~~~~~~~~~~~';
 
 // start listening
@@ -71,7 +72,7 @@ var mail = function () {
             from: '"SOLVERLY" <problem@solverly.io>' // sender address
         };
 
-        mail.text = mail.text.split(separator)[0];
+        mail.text = mail.text.split(separator)[0].split(google_separator)[0];
 
         if (mail.subject.includes('PROBLEM') == false) {
             database.getUsers({
