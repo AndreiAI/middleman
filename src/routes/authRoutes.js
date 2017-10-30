@@ -35,6 +35,9 @@ let mailOptions = {
 
 var router = function () {
     authRouter.route('/signUp')
+        .get(function (req, res) {
+            res.render('newSignup');
+        })
         .post(function (req, res) {
             //~~~~~~~~~~~~~~~~Check for spambots~~~~~~~~~~~~~~~~~~~~~~~~
             var userIP = req.connection.remoteAddress;
