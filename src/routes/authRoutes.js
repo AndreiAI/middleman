@@ -189,7 +189,7 @@ var router = function () {
 
     authRouter.route('/passReset') //Add the link and actually change the password
         .get(function (req, res) {
-            res.render('passReset');
+            res.render('newForgotPassword');
         })
         .post(function (req, res) {
             console.log(req.body.email);
