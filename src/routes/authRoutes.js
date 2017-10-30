@@ -215,7 +215,7 @@ var router = function () {
 
                     database.updateUser(results[0], function (response) {
                         if (response === true) {
-                            res.render('passReset', {
+                            res.render('newForgotPassword', {
                                 response: true
                             });
                         } else {
@@ -223,7 +223,7 @@ var router = function () {
                         }
                     });
                 } else {
-                    res.render('passReset', {
+                    res.render('newForgotPassword', {
                         error: 'Email not found'
                     });
                 }
