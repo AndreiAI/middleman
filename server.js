@@ -23,7 +23,7 @@ var app = express();
 var port = process.env.PORT || 8000;
 
 app.use(express.static('public'));
-app.use(express.static(__dirname + '/assets'));
+app.use(express.static('assets'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
