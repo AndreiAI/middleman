@@ -1222,7 +1222,6 @@
 								<h6 class="text-semibold">Description</h6>
 								<p class="content-group"><%= result.description %></p>
                                 
-                                <!--
 								<h6 class="text-semibold">What we need</h6>
 								<p class="content-group-lg">Some cow goose out and sweeping wow the skillfully goodness one crazily far some jeez darn well so peevish pending nudged categorically in between about much alas handsome intolerable devotedly helpfully smiled momentously next much this this next sweepingly far. Together prim and limpet much extravagantly quail longing a ouch that walking a jeepers flamingo more.</p>
 
@@ -1465,6 +1464,7 @@
                                     <% } %>
 								</ul>
 
+                                <form id="sendCommentForm" action="/problem/<%= result._id %>" method="post">
                                     <h6 class="text-semibold"><i class="icon-pencil7 position-left"></i> Your comment</h6>
                                     <div class="content-group">
                                         <div name="update" id="add-comment"></div>
@@ -1473,6 +1473,7 @@
                                     <div class="text-right">
                                         <button type="button" class="btn bg-blue" onclick="sendComment()"><i class="icon-plus22"></i> Add comment</button>
                                     </div>
+                                </form>
 							</div>
 						</div>
 						<!-- /comments -->
