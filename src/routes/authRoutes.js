@@ -604,7 +604,7 @@ var router = function () {
                                 database.getEmailProblems({
                                     handler: req.user.email
                                 }, function (emailProblems) {
-                                    res.render('profileHandler2', {
+                                    res.render('taskManager', {
                                         problems: problems,
                                         emailProblems: emailProblems,
                                         updates: updates
@@ -617,7 +617,7 @@ var router = function () {
                     database.getEmailProblems({
                         handler: req.user.email
                     }, function (emailProblems) {
-                        res.render('profileHandler2', {
+                        res.render('taskManager', {
                             problems: problems,
                             emailProblems: emailProblems,
                             updates: updates
