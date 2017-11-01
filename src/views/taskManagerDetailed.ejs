@@ -35,7 +35,7 @@
     <script>
     function sendComment() {
             console.log("Comment submited");
-            document.getElementById("hiddenUpdate").value = document.getElementById("add-comment").innerHTML;
+            //document.getElementById("hiddenUpdate").value = document.getElementById("add-comment").innerHTML;
             document.getElementById("sendCommentForm").submit();
         }
     </script>
@@ -1468,9 +1468,9 @@
                                 <form id="sendCommentForm" action="/problem/<%= result._id %>" method="post">
                                     <h6 class="text-semibold"><i class="icon-pencil7 position-left"></i> Your comment</h6>
                                     <div class="content-group">
-                                        <div id="add-comment"></div>
+                                        <textarea name="update" id="add-comment"></textarea>
                                     </div>
-                                    <input type="hidden" id="hiddenUpdate" name="update" > 
+                                    <!--<input type="hidden" id="hiddenUpdate" name="update" /> -->
 
                                     <div class="text-right">
                                         <button type="button" class="btn bg-blue" onclick="sendComment()"><i class="icon-plus22"></i> Add comment</button>
