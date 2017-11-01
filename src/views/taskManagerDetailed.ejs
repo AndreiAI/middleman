@@ -35,7 +35,7 @@
     <script>
     function sendComment() {
             console.log("Comment submited");
-            //document.getElementById("hiddenUpdate").value = document.getElementById("add-comment").innerHTML;
+            document.getElementById("add-comment").value = document.getElementById("add-comment").value.strip("<p>", "");
             document.getElementById("sendCommentForm").submit();
         }
     </script>
