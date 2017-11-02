@@ -1871,7 +1871,6 @@
                                                         <input name="id" type="hidden" value="<%=emailProblems[i]._id%>" />
                                                         <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
                                                         <div class="form-group">
-                                                            <label class="control-label col-lg-2">Default select</label>
                                                             <div class="col-lg-10">
                                                                 <select name="type" class="form-control" required>
                                                                     <option value="opt1">Option 1</option>
@@ -1886,7 +1885,12 @@
                                                                 <input name="fixer" type="email" placeholder="Fixer" required class="form-control">
                                                             </div>
                                                         </div>
-                                                        <input name="deadline" type="date" required/><br/>
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                <input name="deadline" class="form-control" type="date" required>
+                                                                <span class="help-block">Using <code>input type="date"</code></span>
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group">
                                                             <div class="col-lg-10">
                                                                 <select name="priority" class="form-control" required>
