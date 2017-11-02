@@ -1927,6 +1927,41 @@
                                                     <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
                                                     <div class="form-group">
                                                         <div class="col-lg-10">
+                                                            <input type="text" name="addressLine1" placeholder="Street adress, P.O. box, company name, etc" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-lg-10">
+                                                             <input type="text" name="addressLine2" placeholder="Apartament, suite, unit, building, floor, etc" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-lg-10">
+                                                            <input type="text" name="city" placeholder="City" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-lg-10">
+                                                             <input type="text" name="state" placeholder="State" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-lg-10">
+                                                            <input type="text" name="zip" placeholder="Zip" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-lg-10">
+                                                            <input type="text" name="country" placeholder="Country" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-lg-10">
+                                                            <input type="tel" pattern='^\+?\d{0,13}' name="phone" placeholder="Phone number" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-lg-10">
                                                             <select name="type" class="form-control" required>
                                                                 <option value="opt1">Option 1</option>
                                                                 <option value="opt2">Option 2</option>
@@ -2015,6 +2050,41 @@
                                                     <form id="formUnassigned<%= emailProblems[i + 1]._id %>" action='/auth/email/logProblem' method='post'>
                                                         <input name="id" type="hidden" value="<%= emailProblems[i + 1]._id %>" />
                                                         <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <input type="text" name="addressLine1" placeholder="Street adress, P.O. box, company name, etc" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                 <input type="text" name="addressLine2" placeholder="Apartament, suite, unit, building, floor, etc" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <input type="text" name="city" placeholder="City" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                 <input type="text" name="state" placeholder="State" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <input type="text" name="zip" placeholder="Zip" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <input type="text" name="country" placeholder="Country" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <input type="tel" pattern='^\+?\d{0,13}' name="phone" placeholder="Phone number" class="form-control">
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group">
                                                             <div class="col-lg-10">
                                                                 <select name="type" class="form-control" required>
