@@ -1823,15 +1823,15 @@
                         <span class="pt-10 pb-10">Unassigned Website</span>
                     </div>
 
-                    <% for(var i = 0; i < emailProblem.length; i += 2) { %>
+                    <% for(var i = 0; i < emailProblems.length; i += 2) { %>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="panel border-left-lg border-left-primary">
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <h6 class="no-margin-top"><a href="/problem/<%= emailProblem[i]._id %>">#<%= emailProblem[i]._id %>. <%= emailProblem[i].summary %></a></h6>
-                                                <p class="mb-15"><%= emailProblem[i].description %></p>
+                                                <h6 class="no-margin-top"><a href="/problem/<%= emailProblems[i]._id %>">#<%= emailProblems[i]._id %>. <%= emailProblems[i].summary %></a></h6>
+                                                <p class="mb-15"><%= emailProblems[i].description %></p>
                                                 <!-- People circle
                                                 <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
                                                 <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
@@ -1876,14 +1876,14 @@
                                 </div>
                             </div>
 
-                            <% if (i + 1 < emailProblem.length) { %>
+                            <% if (i + 1 < emailProblems.length) { %>
                                 <div class="col-md-6">
                                     <div class="panel border-left-lg border-left-primary">
                                         <div class="panel-body">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h6 class="no-margin-top"><a href="/problem/<%= emailProblem[i + 1]._id %>">#<%= emailProblem[i + 1]._id %>. <%= emailProblem[i + 1].summary %></a></h6>
-                                                    <p class="mb-15"><%= emailProblem[i + 1].description %></p>
+                                                    <h6 class="no-margin-top"><a href="/problem/<%= emailProblems[i + 1]._id %>">#<%= emailProblems[i + 1]._id %>. <%= emailProblems[i + 1].summary %></a></h6>
+                                                    <p class="mb-15"><%= emailProblems[i + 1].description %></p>
                                                     <!-- People circle
                                                     <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
                                                     <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
