@@ -433,7 +433,7 @@ var router = function () {
 
                             if (Object.keys(updates).length == problems.length) {
 
-                                res.render('client', {
+                                res.render('taskManager', {
                                     user: req.user,
                                     problems: problems,
                                     updates: updates
@@ -442,7 +442,7 @@ var router = function () {
                         });
                     });
                 } else {
-                    res.render('client', {
+                    res.render('taskManager', {
                         user: req.user,
                         problems: problems,
                         updates: updates
