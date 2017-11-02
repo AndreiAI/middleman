@@ -31,7 +31,11 @@
     <script type="text/javascript" src="/assets/js/core/app.js"></script>
     <script type="text/javascript" src="/assets/js/pages/tasks_grid.js"></script>
     <!-- /theme JS files -->
-
+    <script>
+        function submitFormUnassigned(id) {
+            document.getElementById("formUnassigned" + id).submit();
+        }
+    </script>
 </head>
 
 <body class="sidebar-xs">
@@ -1726,27 +1730,41 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <ul class="list task-details">
-                                                    <form action="" method="post">
-                                                        <input name="id" type="hidden" value="<%=problemsUnassigned[i]._id%>" />
+                                                    <form id="formUnassigned<%= problemsUnassigned[i]._id %>" action="" method="post">
+                                                        <input name="id" type="hidden" value="<%= problemsUnassigned[i]._id %>" />
                                                         <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
-                                                        <select name="type" required>
-                                                            <option value="option 1">Option 1</option>
-                                                            <option value="option 1">Option 2</option>
-                                                            <option value="option 1">Option 3</option>
-                                                            <option value="option 1">Option 4</option>
-                                                        </select><br/>
                                                         <div class="form-group">
-                                                            <label class="control-label col-lg-2">Default text input</label>
+                                                            <div class="col-lg-10">
+                                                                <select name="type" class="form-control" required>
+                                                                    <option value="opt1">Option 1</option>
+                                                                    <option value="opt2">Option 2</option>
+                                                                    <option value="opt3">Option 3</option>
+                                                                    <option value="opt4">Option 4</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
                                                             <div class="col-lg-10">
                                                                 <input name="fixer" type="email" placeholder="Fixer" required class="form-control">
                                                             </div>
                                                         </div>
-                                                        <input name="deadline" type="date" required/><br/>
-                                                        <input name="priority" type="radio" value="green" checked />green<br/>
-                                                        <input name="priority" type="radio" value="yellow" />yellow<br/>
-                                                        <input name="priority" type="radio" value="red" />red<br/>
-                                                        <input name="update" type="text" placeholder="Anything to add" /><br/>
-                                                        <input type="submit" value="Save" />
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                <input name="deadline" class="form-control" type="date" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <select name="priority" class="form-control" required>
+                                                                    <option value="red">High priority</option>
+                                                                    <option selected value="yellow">Normal priority</option>
+                                                                    <option value="green">Low priority</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-right">
+                                                            <button type="submit" class="btn btn-primary" onclick="submitFormUnassigned(<%= problemsUnassigned[i]._id %>)">Save <i class="icon-arrow-right14 position-right"></i></button>
+                                                        </div>
                                                     </form>
                                                 </ul>
                                             </div>
@@ -1801,6 +1819,44 @@
                                                     <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
                                                     <a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
                                                     -->
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <form id="formUnassigned<%= problemsUnassigned[i + 1]._id %>" action="" method="post">
+                                                        <input name="id" type="hidden" value="<%= problemsUnassigned[i + 1]._id %>" />
+                                                        <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <select name="type" class="form-control" required>
+                                                                    <option value="opt1">Option 1</option>
+                                                                    <option value="opt2">Option 2</option>
+                                                                    <option value="opt3">Option 3</option>
+                                                                    <option value="opt4">Option 4</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <input name="fixer" type="email" placeholder="Fixer" required class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                <input name="deadline" class="form-control" type="date" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <select name="priority" class="form-control" required>
+                                                                    <option value="red">High priority</option>
+                                                                    <option selected value="yellow">Normal priority</option>
+                                                                    <option value="green">Low priority</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-right">
+                                                            <button type="submit" class="btn btn-primary" onclick="submitFormUnassigned(<%= problemsUnassigned[i + 1]._id %>)">Save <i class="icon-arrow-right14 position-right"></i></button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -1866,8 +1922,8 @@
                                                 -->
                                             </div>
                                             <div class="col-md-4">
-                                                <form action="" method="post">
-                                                    <input name="id" type="hidden" value="<%=emailProblems[i]._id%>" />
+                                                <form id="formUnassigned<%= emailProblems[i]._id %>" action="" method="post">
+                                                    <input name="id" type="hidden" value="<%= emailProblems[i]._id %>" />
                                                     <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
                                                     <div class="form-group">
                                                         <div class="col-lg-10">
@@ -1898,7 +1954,9 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <input type="submit" value="Save" />
+                                                    <div class="text-right">
+                                                        <button type="submit" class="btn btn-primary" onclick="submitFormUnassigned(<%= emailProblems[i]._id %>)">Save <i class="icon-arrow-right14 position-right"></i></button>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -1952,6 +2010,44 @@
                                                     <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
                                                     <a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
                                                     -->
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <form id="formUnassigned<%= emailProblems[i + 1]._id %>" action="" method="post">
+                                                        <input name="id" type="hidden" value="<%= emailProblems[i + 1]._id %>" />
+                                                        <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <select name="type" class="form-control" required>
+                                                                    <option value="opt1">Option 1</option>
+                                                                    <option value="opt2">Option 2</option>
+                                                                    <option value="opt3">Option 3</option>
+                                                                    <option value="opt4">Option 4</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <input name="fixer" type="email" placeholder="Fixer" required class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                <input name="deadline" class="form-control" type="date" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <select name="priority" class="form-control" required>
+                                                                    <option value="red">High priority</option>
+                                                                    <option selected value="yellow">Normal priority</option>
+                                                                    <option value="green">Low priority</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-right">
+                                                            <button type="submit" class="btn btn-primary" onclick="submitFormUnassigned(<%= emailProblems[i + 1]._id %>)">Save <i class="icon-arrow-right14 position-right"></i></button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
