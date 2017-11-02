@@ -638,7 +638,7 @@ var router = function () {
         })
         .post(function (req, res) {
             //how to update this one
-            //console.log(req.body);
+            console.log(req.body);
             req.body.status = 'onGoing';
             database.updateProblem(req.body.id, req.body, function (response) {
                 if (response === false) {
