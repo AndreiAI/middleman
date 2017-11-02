@@ -1870,22 +1870,32 @@
                                                     <form action="" method="post">
                                                         <input name="id" type="hidden" value="<%=emailProblems[i]._id%>" />
                                                         <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
-                                                        <select name="type" required>
-                                                            <option value="option 1">Option 1</option>
-                                                            <option value="option 1">Option 2</option>
-                                                            <option value="option 1">Option 3</option>
-                                                            <option value="option 1">Option 4</option>
-                                                        </select><br/>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-lg-2">Default select</label>
+                                                            <div class="col-lg-10">
+                                                                <select name="type" class="form-control" required>
+                                                                    <option value="opt1">Option 1</option>
+                                                                    <option value="opt2">Option 2</option>
+                                                                    <option value="opt3">Option 3</option>
+                                                                    <option value="opt4">Option 4</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group">
                                                             <div class="col-lg-10">
                                                                 <input name="fixer" type="email" placeholder="Fixer" required class="form-control">
                                                             </div>
                                                         </div>
                                                         <input name="deadline" type="date" required/><br/>
-                                                        <input name="priority" type="radio" value="green" checked />green<br/>
-                                                        <input name="priority" type="radio" value="yellow" />yellow<br/>
-                                                        <input name="priority" type="radio" value="red" />red<br/>
-                                                        <input name="update" type="text" placeholder="Anything to add" /><br/>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                <select name="priority" class="form-control" required>
+                                                                    <option value="red">High priority</option>
+                                                                    <option selected value="yellow">Normal priority</option>
+                                                                    <option value="green">Low priority</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                         <input type="submit" value="Save" />
                                                     </form>
                                                 </ul>
