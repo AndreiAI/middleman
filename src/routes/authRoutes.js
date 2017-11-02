@@ -586,9 +586,7 @@ var router = function () {
         .get(function (req, res) {
             database.getProblems({
                 handler: req.user.email,
-                status: {
-                    '$ne': 'completed'
-                }
+                status: 'onGoing'
             }, function (problems) {
                 var updates = {};
 
@@ -604,10 +602,16 @@ var router = function () {
                                 database.getEmailProblems({
                                     handler: req.user.email
                                 }, function (emailProblems) {
-                                    res.render('taskManager', {
-                                        problems: problems,
-                                        emailProblems: emailProblems,
-                                        updates: updates
+                                    database.getProblems({
+                                        handler: req.user.email,
+                                        status: 'unassigned'
+                                    }, function (problemsUnassigned) {
+                                        res.render('taskManager', {
+                                            problems: problems,
+                                            problemsUnassigned: problemsUnassigned,
+                                            emailProblems: emailProblems,
+                                            updates: updates
+                                        });
                                     });
                                 });
                             }
@@ -617,10 +621,16 @@ var router = function () {
                     database.getEmailProblems({
                         handler: req.user.email
                     }, function (emailProblems) {
-                        res.render('taskManager', {
-                            problems: problems,
-                            emailProblems: emailProblems,
-                            updates: updates
+                        database.getProblems({
+                            handler: req.user.email,
+                            status: 'unassigned'
+                        }, function (problemsUnassigned) {
+                            res.render('taskManager', {
+                                problems: problems,
+                                problemsUnassigned: problemsUnassigned,
+                                emailProblems: emailProblems,
+                                updates: updates
+                            });
                         });
                     });
                 }

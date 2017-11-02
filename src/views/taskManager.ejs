@@ -1701,6 +1701,160 @@
                         <% } %>
                     </div>
                 <% } %>
+                
+                <div class="text-center content-group text-muted content-divider">
+                    <span class="pt-10 pb-10">Unassigned</span>
+                </div>
+                
+                <% for(var i = 0; i < problems.length; i += 2) { %>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel border-left-lg border-left-primary">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <h6 class="no-margin-top"><a href="/problem/<%= problems[i]._id %>">#<%= problems[i]._id %>. <%= problems[i].summary %></a></h6>
+                                            <p class="mb-15"><%= problems[i].description %></p>
+                                            <!-- People circle
+                                            <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                            <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                            <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                            <a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+                                            -->
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <ul class="list task-details">
+                                                <% var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; var date = new Date(problems[i].totalTime); %>
+                                                <li><%= date.getDate() %> <%= monthNames[date.getMonth()] %> <%= date.getFullYear() %></li>
+                                                <li class="dropdown">
+                                                    Priority: &nbsp;
+                                                    <a href="#" class="label <%= priority[problems[i].priority] %> dropdown-toggle" data-toggle="dropdown"><%= priorityName[problems[i].priority] %> <span class="caret"></span></a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li><a href="#"><span class="status-mark position-left bg-danger"></span> High priority</a></li>
+                                                        <li class="active"><a href="#"><span class="status-mark position-left bg-primary"></span> Normal priority</a></li>
+                                                        <li><a href="#"><span class="status-mark position-left bg-success"></span> Low priority</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#"><%= problems[i].address %></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <%  var myDate = problems[i].deadline; myDate = myDate.split("-"); var newDate = myDate[0] + "/" + myDate[1] + "/" + myDate[2]; var deadlineTimestamp = new Date(newDate).getTime(); %>
+                                
+                                <div class="panel-footer panel-footer-condensed">
+                                    <div class="heading-elements">
+                                        <span class="heading-text">Due: <span class="text-semibold"><%= Math.round((deadlineTimestamp - new Date().getTime()) / 3600000) %> hours</span></span>
+
+                                        <ul class="list-inline list-inline-condensed heading-text pull-right">
+                                            <li class="dropdown">
+                                                <a href="#" class="text-default dropdown-toggle" data-toggle="dropdown">Open <span class="caret"></span></a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li class="active"><a href="#">Open</a></li>
+                                                    <li><a href="#">On hold</a></li>
+                                                    <li><a href="#">Resolved</a></li>
+                                                    <li><a href="#">Closed</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#">Dublicate</a></li>
+                                                    <li><a href="#">Invalid</a></li>
+                                                    <li><a href="#">Wontfix</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="dropdown">
+                                                <a href="#" class="text-default dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i> <span class="caret"></span></a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+                                                    <li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+                                                    <li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+                                                    <li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <% if (i + 1 < problems.length) { %>
+                            <div class="col-md-6">
+                                <div class="panel border-left-lg border-left-primary">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <h6 class="no-margin-top"><a href="/problem/<%= problems[i + 1]._id %>">#<%= problems[i + 1]._id %>. <%= problems[i + 1].summary %></a></h6>
+                                                <p class="mb-15"><%= problems[i + 1].description %></p>
+                                                <!-- People circle
+                                                <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                                <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                                <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                                <a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+                                                -->
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <ul class="list task-details">
+                                                    <% var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; var date = new Date(problems[i + 1].totalTime); %>
+                                                    <li><%= date.getDate() %> <%= monthNames[date.getMonth()] %> <%= date.getFullYear() %></li>
+                                                    <li class="dropdown">
+                                                        Priority: &nbsp;
+                                                        <a href="#" class="label <%= priority[problems[i + 1].priority] %> dropdown-toggle" data-toggle="dropdown"><%= priorityName[problems[i + 1].priority] %> <span class="caret"></span></a>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li><a href="#"><span class="status-mark position-left bg-danger"></span> High priority</a></li>
+                                                            <li class="active"><a href="#"><span class="status-mark position-left bg-primary"></span> Normal priority</a></li>
+                                                            <li><a href="#"><span class="status-mark position-left bg-success"></span> Low priority</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#"><%= problems[i + 1].address %></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <%  var myDate = problems[i + 1].deadline; myDate = myDate.split("-"); var newDate = myDate[0] + "/" + myDate[1] + "/" + myDate[2]; var deadlineTimestamp = new Date(newDate).getTime(); console.log(deadlineTimestamp)%>
+
+                                    <div class="panel-footer panel-footer-condensed">
+                                        <div class="heading-elements">
+                                            <span class="heading-text">Due: <span class="text-semibold"><%= Math.round((deadlineTimestamp - new Date().getTime()) / 3600000) %> hours</span></span>
+
+                                            <ul class="list-inline list-inline-condensed heading-text pull-right">
+                                                <li class="dropdown">
+                                                    <a href="#" class="text-default dropdown-toggle" data-toggle="dropdown">Open <span class="caret"></span></a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li class="active"><a href="#">Open</a></li>
+                                                        <li><a href="#">On hold</a></li>
+                                                        <li><a href="#">Resolved</a></li>
+                                                        <li><a href="#">Closed</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#">Dublicate</a></li>
+                                                        <li><a href="#">Invalid</a></li>
+                                                        <li><a href="#">Wontfix</a></li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="dropdown">
+                                                    <a href="#" class="text-default dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i> <span class="caret"></span></a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+                                                        <li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+                                                        <li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+                                                        <li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                <% } %>
                 <!-- /tasks grid -->
 
 
