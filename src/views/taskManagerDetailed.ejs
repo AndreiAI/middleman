@@ -35,7 +35,8 @@
     <script>
     function sendComment() {
             console.log("Comment submited");
-            document.getElementById("add-comment").value = document.getElementById("add-comment").value.replace("<p>", "");
+            console.log(document.getElementById("add-comment").value);
+            document.getElementById("add-comment").innerHTML = document.getElementById("add-comment").innerHTML.replace("<p>", "");
             document.getElementById("sendCommentForm").submit();
         }
     </script>
