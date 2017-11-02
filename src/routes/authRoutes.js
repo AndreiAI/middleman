@@ -652,6 +652,9 @@ var router = function () {
                 fixer: req.user.email,
                 status: {
                     '$ne': 'completed'
+                },
+                requestCompletedFixer: {
+                    '$ne': true
                 }
             }, function (problems) {
                 var updates = {};
