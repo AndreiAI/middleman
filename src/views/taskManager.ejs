@@ -1922,7 +1922,7 @@
                                                 -->
                                             </div>
                                             <div class="col-md-4">
-                                                <form id="formUnassigned<%= emailProblems[i]._id %>" action="" method="post">
+                                                <form id="formUnassigned<%= emailProblems[i]._id %>" action='/auth/email/logProblem' method='post'>
                                                     <input name="id" type="hidden" value="<%= emailProblems[i]._id %>" />
                                                     <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
                                                     <div class="form-group">
@@ -2012,7 +2012,7 @@
                                                     -->
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <form id="formUnassigned<%= emailProblems[i + 1]._id %>" action="" method="post">
+                                                    <form id="formUnassigned<%= emailProblems[i + 1]._id %>" action='/auth/email/logProblem' method='post'>
                                                         <input name="id" type="hidden" value="<%= emailProblems[i + 1]._id %>" />
                                                         <!--<input name="type" type="text" placeholder="Problem type" required/><br/>-->
                                                         <div class="form-group">
