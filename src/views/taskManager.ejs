@@ -1820,7 +1820,7 @@
                 <% if (emailProblems !== undefined) { %>
 
                     <div class="text-center content-group text-muted content-divider">
-                        <span class="pt-10 pb-10">Unassigned Website</span>
+                        <span class="pt-10 pb-10">Unassigned Mail</span>
                     </div>
 
                     <% for(var i = 0; i < emailProblems.length; i += 2) { %>
@@ -1830,8 +1830,8 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <h6 class="no-margin-top"><a href="/problem/<%= emailProblems[i]._id %>">#<%= emailProblems[i]._id %>. <%= emailProblems[i].summary %></a></h6>
-                                                <p class="mb-15"><%= emailProblems[i].description %></p>
+                                                <h6 class="no-margin-top"><a href="/problem/<%= emailProblems[i]._id %>">#<%= emailProblems[i]._id %>. <%= emailProblems[i].subject %></a></h6>
+                                                <p class="mb-15"><%= emailProblems[i].body %></p>
                                                 <!-- People circle
                                                 <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
                                                 <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
@@ -1882,8 +1882,8 @@
                                         <div class="panel-body">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h6 class="no-margin-top"><a href="/problem/<%= emailProblems[i + 1]._id %>">#<%= emailProblems[i + 1]._id %>. <%= emailProblems[i + 1].summary %></a></h6>
-                                                    <p class="mb-15"><%= emailProblems[i + 1].description %></p>
+                                                    <h6 class="no-margin-top"><a href="/problem/<%= emailProblems[i + 1]._id %>">#<%= emailProblems[i + 1]._id %>. <%= emailProblems[i + 1].subject %></a></h6>
+                                                    <p class="mb-15"><%= emailProblems[i + 1].body %></p>
                                                     <!-- People circle
                                                     <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
                                                     <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
