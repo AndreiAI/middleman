@@ -1411,8 +1411,8 @@
 										<li class="dropdown">
 											<a href="#" class="text-default text-semibold dropdown-toggle" data-toggle="dropdown"><%= result.status %> <span class="caret"></span></a>
 											<ul class="dropdown-menu">
-												<li class="active"><a href="#">Open</a></li>
-												<li onclick="sendCompleted()">Completed</li>
+												<li class="active"><a>Open</a></li>
+												<li onclick="sendCompleted()"><a>Completed</a></li>
                                                 <% if(result.user.type === "fixer" && result.status === "onGoing" && typeof     result.requestCompletedFixer == 'undefined') { %>
                                                     <form id="formCompleted" action="/problem/complete/<%= result._id %>" method="post" style="display: none">
                                                         <input type="submit" value="Mark as complete" />
