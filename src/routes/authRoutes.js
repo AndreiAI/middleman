@@ -665,7 +665,7 @@ var router = function () {
 
                             if (Object.keys(updates).length == problems.length) {
 
-                                res.render('profileFixer2', {
+                                res.render('taskManager', {
                                     problems: problems,
                                     updates: updates
                                 });
@@ -673,7 +673,7 @@ var router = function () {
                         });
                     });
                 } else {
-                    res.render('profileFixer2', {
+                    res.render('taskManager', {
                         problems: problems,
                         updates: updates
                     });
