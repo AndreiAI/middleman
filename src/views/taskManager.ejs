@@ -1702,71 +1702,21 @@
                     </div>
                 <% } %>
                 
-                <div class="text-center content-group text-muted content-divider">
-                    <span class="pt-10 pb-10">Unassigned</span>
-                </div>
-                
-                <% for(var i = 0; i < problemsUnassigned.length; i += 2) { %>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="panel border-left-lg border-left-primary">
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <h6 class="no-margin-top"><a href="/problem/<%= problemsUnassigned[i]._id %>">#<%= problemsUnassigned[i]._id %>. <%= problemsUnassigned[i].summary %></a></h6>
-                                            <p class="mb-15"><%= problemsUnassigned[i].description %></p>
-                                            <!-- People circle
-                                            <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
-                                            <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
-                                            <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
-                                            <a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
-                                            -->
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="panel-footer panel-footer-condensed">
-                                    <div class="heading-elements">
-                                        <ul class="list-inline list-inline-condensed heading-text pull-right">
-                                            <li class="dropdown">
-                                                <a href="#" class="text-default dropdown-toggle" data-toggle="dropdown">Open <span class="caret"></span></a>
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li class="active"><a href="#">Open</a></li>
-                                                    <li><a href="#">On hold</a></li>
-                                                    <li><a href="#">Resolved</a></li>
-                                                    <li><a href="#">Closed</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#">Dublicate</a></li>
-                                                    <li><a href="#">Invalid</a></li>
-                                                    <li><a href="#">Wontfix</a></li>
-                                                </ul>
-                                            </li>
+                <% if (problemsUnassigned !== undefined) { %>
 
-                                            <li class="dropdown">
-                                                <a href="#" class="text-default dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i> <span class="caret"></span></a>
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
-                                                    <li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
-                                                    <li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
-                                                    <li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <% if (i + 1 < problemsUnassigned.length) { %>
+                    <div class="text-center content-group text-muted content-divider">
+                        <span class="pt-10 pb-10">Unassigned</span>
+                    </div>
+
+                    <% for(var i = 0; i < problemsUnassigned.length; i += 2) { %>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="panel border-left-lg border-left-primary">
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <h6 class="no-margin-top"><a href="/problem/<%= problemsUnassigned[i + 1]._id %>">#<%= problemsUnassigned[i + 1]._id %>. <%= problemsUnassigned[i + 1].summary %></a></h6>
-                                                <p class="mb-15"><%= problemsUnassigned[i + 1].description %></p>
+                                                <h6 class="no-margin-top"><a href="/problem/<%= problemsUnassigned[i]._id %>">#<%= problemsUnassigned[i]._id %>. <%= problemsUnassigned[i].summary %></a></h6>
+                                                <p class="mb-15"><%= problemsUnassigned[i].description %></p>
                                                 <!-- People circle
                                                 <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
                                                 <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
@@ -1810,10 +1760,62 @@
                                     </div>
                                 </div>
                             </div>
-                        <% } %>
-                    </div>
+
+                            <% if (i + 1 < problemsUnassigned.length) { %>
+                                <div class="col-md-6">
+                                    <div class="panel border-left-lg border-left-primary">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h6 class="no-margin-top"><a href="/problem/<%= problemsUnassigned[i + 1]._id %>">#<%= problemsUnassigned[i + 1]._id %>. <%= problemsUnassigned[i + 1].summary %></a></h6>
+                                                    <p class="mb-15"><%= problemsUnassigned[i + 1].description %></p>
+                                                    <!-- People circle
+                                                    <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                                    <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                                    <a href="#"><img src="/assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                                    <a href="#" class="text-default">&nbsp;<i class="icon-plus22"></i></a>
+                                                    -->
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel-footer panel-footer-condensed">
+                                            <div class="heading-elements">
+                                                <ul class="list-inline list-inline-condensed heading-text pull-right">
+                                                    <li class="dropdown">
+                                                        <a href="#" class="text-default dropdown-toggle" data-toggle="dropdown">Open <span class="caret"></span></a>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li class="active"><a href="#">Open</a></li>
+                                                            <li><a href="#">On hold</a></li>
+                                                            <li><a href="#">Resolved</a></li>
+                                                            <li><a href="#">Closed</a></li>
+                                                            <li class="divider"></li>
+                                                            <li><a href="#">Dublicate</a></li>
+                                                            <li><a href="#">Invalid</a></li>
+                                                            <li><a href="#">Wontfix</a></li>
+                                                        </ul>
+                                                    </li>
+
+                                                    <li class="dropdown">
+                                                        <a href="#" class="text-default dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i> <span class="caret"></span></a>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li><a href="#"><i class="icon-alarm-add"></i> Check in</a></li>
+                                                            <li><a href="#"><i class="icon-attachment"></i> Attach screenshot</a></li>
+                                                            <li><a href="#"><i class="icon-rotate-ccw2"></i> Reassign</a></li>
+                                                            <li class="divider"></li>
+                                                            <li><a href="#"><i class="icon-pencil7"></i> Edit task</a></li>
+                                                            <li><a href="#"><i class="icon-cross2"></i> Remove</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                    <% } %>
                 <% } %>
-                
                 <!-- /tasks grid -->
 
 
