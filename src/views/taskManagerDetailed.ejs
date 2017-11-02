@@ -32,11 +32,15 @@
 	<script type="text/javascript" src="/assets/js/pages/task_detailed.js"></script>
 	<!-- /theme JS files -->
     <script>
-    function sendComment() {
+        function sendComment() {
             console.log("Comment submited");
             console.log(document.getElementById("add-comment").value);
             document.getElementById("add-comment").innerHTML = document.getElementById("add-comment").innerHTML.replace("<p>", "");
             document.getElementById("sendCommentForm").submit();
+        }
+
+        function sendCompleted() {
+            document.getElementById("formCompleted").submit();
         }
     </script>
 </head>
@@ -1405,16 +1409,28 @@
 									<ul class="list-inline list-inline-condensed heading-text">
 										<li><span class="status-mark border-blue position-left"></span> Status:</li>
 										<li class="dropdown">
-											<a href="#" class="text-default text-semibold dropdown-toggle" data-toggle="dropdown">Open <span class="caret"></span></a>
+											<a href="#" class="text-default text-semibold dropdown-toggle" data-toggle="dropdown"><%= result.status %> <span class="caret"></span></a>
 											<ul class="dropdown-menu">
 												<li class="active"><a href="#">Open</a></li>
-												<li><a href="#">On hold</a></li>
+												<li onclick="sendCompleted()">Completed</li>
+                                                <% if(result.user.type === "fixer" && result.status === "onGoing" && typeof     result.requestCompletedFixer == 'undefined') { %>
+                                                    <form id="formCompleted" action="/problem/complete/<%= result._id %>" method="post" style="display: none">
+                                                        <input type="submit" value="Mark as complete" />
+                                                    </form>
+                                                <% } %>
+                                                <% if(result.user.type === "handler" && result.status === "onGoing") { %>
+                                                    <form id="formCompleted" action="/problem/complete/<%= result._id %>" method="post" style="display: none">
+                                                        <input type="submit" value="Mark as complete" />
+                                                    </form>
+                                                <% } %>
+                                                <!--
 												<li><a href="#">Resolved</a></li>
 												<li><a href="#">Closed</a></li>
 												<li class="divider"></li>
 												<li><a href="#">Dublicate</a></li>
 												<li><a href="#">Invalid</a></li>
 												<li><a href="#">Wontfix</a></li>
+                                                -->
 											</ul>
 										</li>
 									</ul>
