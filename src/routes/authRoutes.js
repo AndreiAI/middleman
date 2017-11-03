@@ -611,6 +611,7 @@ var router = function () {
                                         status: 'unassigned'
                                     }, function (problemsUnassigned) {
                                         res.render('taskManager', {
+                                            user: req.user,
                                             problems: problems,
                                             problemsUnassigned: problemsUnassigned,
                                             emailProblems: emailProblems,
@@ -630,6 +631,7 @@ var router = function () {
                             status: 'unassigned'
                         }, function (problemsUnassigned) {
                             res.render('taskManager', {
+                                user: req.user,
                                 problems: problems,
                                 problemsUnassigned: problemsUnassigned,
                                 emailProblems: emailProblems,
@@ -683,6 +685,7 @@ var router = function () {
                             if (Object.keys(updates).length == problems.length) {
 
                                 res.render('taskManager', {
+                                    user: req.user,
                                     problems: problems,
                                     updates: updates
                                 });
@@ -691,6 +694,7 @@ var router = function () {
                     });
                 } else {
                     res.render('taskManager', {
+                        user: req.user,
                         problems: problems,
                         updates: updates
                     });
@@ -710,6 +714,7 @@ var router = function () {
                 //console.log(results);
 
                 res.render('profileAdmin', {
+                    user: req.user,
                     results: results
                 });
             });
