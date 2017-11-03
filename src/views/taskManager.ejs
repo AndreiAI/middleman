@@ -1706,6 +1706,7 @@
                     </div>
                 <% } %>
                 
+                <% if (problmsUnassigned) { %>
                 <% if (problemsUnassigned && problemsUnassigned.length > 0) { %>
 
                     <div class="text-center content-group text-muted content-divider">
@@ -1897,7 +1898,7 @@
                             <% } %>
                         </div>
                     <% } %>
-                <% } %>
+                <% }} %>
                 
                 <% if (emailProblems && emailProblems.length > 0) { %>
 
