@@ -11,6 +11,22 @@ const http = require('http');
 
 var database = require('../controllers/database')();
 
+const nodemailer = require("nodemailer");
+var mail = require('../controllers/mail');
+
+let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    auth: {
+        user: 'problem@solverly.io',
+        pass: 'NhL2R9%q'
+    }
+});
+
+var google_separator = new RegExp('(On .*> wrote:)');
+var separator = '~~~~~~~~~~~~~~~~~~~~~~~~Reply above~~~~~~~~~~~~~~~~~~~~~~~~';
+
 var router = function () {
     problemRouter.route('/:id')
         .all(function (req, res, next) {
@@ -206,6 +222,20 @@ var router = function () {
                         if (response === false) {
                             console.log('There was a problem updating your issue');
                         } else {
+                            mailOptions.to = results[0].client;
+                            mailOptions.subject = 'PROBLEM' + results[0]._id; // Subject line
+                            mailOptions.text = separator + "\n\n";
+                            mailOptions.text += 'Hi,\n\nYour problem has been completed :) \n\n Please rate our service by replying to this mail with:\n\n#rating <rating>\n\nWhere <rating> is between 1 and 5.\n\nWe hope you enjoyed your services!'; // plain text body
+
+                            transporter.sendMail(mailOptions, (error, info) => {
+                                if (error) {
+                                    return console.log(error);
+                                }
+                                console.log('Message sent: %s', info);
+                                console.log(mailOptions.subject);
+                            });
+
+
                             res.redirect('/auth/profileHandler2');
                         }
                     });

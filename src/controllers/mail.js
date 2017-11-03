@@ -218,7 +218,7 @@ var mail = function () {
                 }, function (results) {
                     //console.log(results);
                     //Need to check if by fixer or handler or user
-                    results[0].status = 'completed'
+                    results[0].status = 'completed';
                     database.updateProblem(mail.subject.split('PROBLEM')[1], results[0], function (response) {
                         if (response === false) {
                             console.log('There was a problem updating your issue');
@@ -226,6 +226,26 @@ var mail = function () {
                             console.log('Problem completed: ' + mail.subject.split('PROBLEM')[1]);
                         }
                     });
+                });
+            }
+
+            if (mail.text !== undefined && mail.text.includes('#rating')) {
+                database.getProblems({
+                    _id: objectId(mail.subject.split('PROBLEM')[1])
+                }, function (results) {
+                    //console.log(results);
+                    //Need to check if by fixer or handler or user
+
+                    if (typeof mail.text.split('#rating')[1][1] != 'undefined' && '1' <= mail.text.split('#rating')[1][1] && mail.text.split('#rating')[1][1] <= '5') {
+                        results[0].rating = mail.text.split('#rating')[1][1];
+                        database.updateProblem(mail.subject.split('PROBLEM')[1], results[0], function (response) {
+                            if (response === false) {
+                                console.log('There was a problem updating your issue');
+                            } else {
+                                console.log('Problem completed: ' + mail.subject.split('PROBLEM')[1]);
+                            }
+                        });
+                    }
                 });
             }
         }
