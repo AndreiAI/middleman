@@ -242,10 +242,28 @@ var mail = function () {
                             if (response === false) {
                                 console.log('There was a problem updating your issue');
                             } else {
-                                console.log('Problem completed: ' + mail.subject.split('PROBLEM')[1]);
+                                console.log('Problem rating: ' + mail.subject.split('PROBLEM')[1]);
                             }
                         });
                     }
+                });
+            }
+
+            if (mail.text !== undefined && mail.text.includes('#reopen')) {
+                database.getProblems({
+                    _id: objectId(mail.subject.split('PROBLEM')[1])
+                }, function (results) {
+                    //console.log(results);
+                    //Need to check if by fixer or handler or user
+
+                    results[0].status = 'onGoing';
+                    database.updateProblem(mail.subject.split('PROBLEM')[1], results[0], function (response) {
+                        if (response === false) {
+                            console.log('There was a problem updating your issue');
+                        } else {
+                            console.log('Problem reopened: ' + mail.subject.split('PROBLEM')[1]);
+                        }
+                    });
                 });
             }
         }

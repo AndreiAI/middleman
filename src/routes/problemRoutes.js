@@ -229,7 +229,7 @@ var router = function () {
                             mailOptions.to = results[0].client;
                             mailOptions.subject = 'PROBLEM' + results[0]._id; // Subject line
                             mailOptions.text = separator + "\n\n";
-                            mailOptions.text += 'Hi,\n\nYour problem has been completed :) \n\n Please rate our service by replying to this mail with:\n\n#rating <rating>\n\nWhere <rating> is between 1 and 5.\n\nWe hope you enjoyed your services!'; // plain text body
+                            mailOptions.text += 'Hi,\n\nYour problem has been completed :)\n\n If the problem still persists, type: #reopen to reopen the problem. \n\n Please rate our service by replying to this mail with:\n\n#rating <rating>\n\nWhere <rating> is between 1 and 5.\n\nWe hope you enjoyed your services!'; // plain text body
 
                             transporter.sendMail(mailOptions, (error, info) => {
                                 if (error) {
