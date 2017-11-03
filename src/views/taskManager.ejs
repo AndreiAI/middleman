@@ -1602,11 +1602,13 @@
                                     </div>
                                 </div>
 
-                                <%  var myDate = problems[i].deadline; myDate = myDate.split("-"); var newDate = myDate[0] + "/" + myDate[1] + "/" + myDate[2]; var deadlineTimestamp = new Date(newDate).getTime(); %>
+                                <%  if(problems[i].status == "onGoing") { var myDate = problems[i].deadline; myDate = myDate.split("-"); var newDate = myDate[0] + "/" + myDate[1] + "/" + myDate[2]; var deadlineTimestamp = new Date(newDate).getTime(); } %>
                                 
                                 <div class="panel-footer panel-footer-condensed">
                                     <div class="heading-elements">
-                                        <span class="heading-text">Due: <span class="text-semibold"><%= Math.round((deadlineTimestamp - new Date().getTime()) / 3600000) %> hours</span></span>
+                                        <% if(problems[i].status == "onGoing") { %>
+                                            <span class="heading-text">Due: <span class="text-semibold"><%= Math.round((deadlineTimestamp - new Date().getTime()) / 3600000) %> hours</span></span>
+                                        <% } %>
 
                                         <ul class="list-inline list-inline-condensed heading-text pull-right">
                                             <li class="dropdown">
@@ -1675,11 +1677,13 @@
                                         </div>
                                     </div>
 
-                                    <%  var myDate = problems[i + 1].deadline; myDate = myDate.split("-"); var newDate = myDate[0] + "/" + myDate[1] + "/" + myDate[2]; var deadlineTimestamp = new Date(newDate).getTime(); console.log(deadlineTimestamp)%>
+                                    <% if(problems[i].status == "onGoing") { var myDate = problems[i + 1].deadline; myDate = myDate.split("-"); var newDate = myDate[0] + "/" + myDate[1] + "/" + myDate[2]; var deadlineTimestamp = new Date(newDate).getTime(); console.log(deadlineTimestamp) } %>
 
                                     <div class="panel-footer panel-footer-condensed">
                                         <div class="heading-elements">
-                                            <span class="heading-text">Due: <span class="text-semibold"><%= Math.round((deadlineTimestamp - new Date().getTime()) / 3600000) %> hours</span></span>
+                                            <% if(problems[i].status == "onGoing") { %>
+                                                <span class="heading-text">Due: <span class="text-semibold"><%= Math.round((deadlineTimestamp - new Date().getTime()) / 3600000) %> hours</span></span>
+                                            <% } %>
 
                                             <ul class="list-inline list-inline-condensed heading-text pull-right">
                                                 <li class="dropdown">
