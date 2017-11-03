@@ -177,8 +177,11 @@ var router = function () {
 
     authRouter.route('/logInFailed')
         .get(function (req, res) {
-            console.log('stuff');
-            res.render('logInFailed');
+            console.log('LOGIN FAILED', req);
+            res.render('newLogin', {
+                issue: true,
+                email: req.body.email
+            });
         });
 
     authRouter.route('/logOut')

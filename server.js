@@ -49,7 +49,9 @@ app.get('/', function (req, res) {
         res.redirect('https://solverly.io/auth/profileAdmin');
     } else {
         if (req.connection.encrypted) {
-            res.render('newLogin');
+            res.render('newLogin', {
+                issues: false
+            });
         } else {
             res.redirect('https://solverly.io/');
         }
