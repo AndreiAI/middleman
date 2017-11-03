@@ -1190,10 +1190,12 @@
                 </ul>
             </div>
 
-            <div class="heading-elements">
-                <a href="#" class="btn bg-blue btn-labeled heading-btn"><b><i class="icon-task"></i></b> Create task</a>
-                <a href="#" class="btn btn-default btn-icon heading-btn"><i class="icon-gear"></i></a>
-            </div>
+            <% if(user.type == "client") { %>
+                <div class="heading-elements">
+                    <a href="/auth/logProblem" class="btn bg-blue btn-labeled heading-btn"><b><i class="icon-task"></i></b> Create task</a>
+                    <a href="/auth/profileSettings" class="btn btn-default btn-icon heading-btn"><i class="icon-gear"></i></a>
+                </div>
+            <% } %>
         </div>
     </div>
     <!-- /page header -->
