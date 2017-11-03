@@ -175,32 +175,36 @@ var router = function () {
                         res.redirect('profileAdmin');
                     }
                 })*/
-        .post(passport.authenticate('local'), function (err, user, info) {
-            if (err) {
-                console.log(err);
-                res.render('newLogin', {
-                    issue: true,
-                    email: req.body.email
-                });
-            } else if (!user) {
-                console.log('Authentication failed for: ', req.body.email);
+        .post(function (req, res) {
+            passport.authenticate('local'),
+                function (err, user, info) {
+                    if (err) {
+                        console.log(err);
+                        res.render('newLogin', {
+                            issue: true,
+                            email: req.body.email
+                        });
+                    } else if (!user) {
+                        console.log('Authentication failed for: ', req.body.email);
 
-                res.render('newLogin', {
-                    issue: true,
-                    email: req.body.email
-                });
-            } else {
-                if (req.user.type === 'client') {
-                    res.redirect('client');
-                } else if (req.user.type === 'handler') {
-                    res.redirect('profileHandler2');
-                } else if (req.user.type === 'fixer') {
-                    res.redirect('profileFixer2');
-                } else if (req.user.type === 'admin') {
-                    res.redirect('profileAdmin');
+                        res.render('newLogin', {
+                            issue: true,
+                            email: req.body.email
+                        });
+                    } else {
+                        if (req.user.type === 'client') {
+                            res.redirect('client');
+                        } else if (req.user.type === 'handler') {
+                            res.redirect('profileHandler2');
+                        } else if (req.user.type === 'fixer') {
+                            res.redirect('profileFixer2');
+                        } else if (req.user.type === 'admin') {
+                            res.redirect('profileAdmin');
+                        }
+                    }
                 }
-            }
         })
+
 
     authRouter.route('/logInFailed')
         .get(function (req, res) {
