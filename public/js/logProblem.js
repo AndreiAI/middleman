@@ -22,12 +22,14 @@ function getAddress(position) {
 
             console.log(response.results[0].formatted_address);
 
-            document.getElementById("inputStreet").value = response.results[0].address_components[1].long_name;
-            document.getElementById("inputUnit").value = response.results[0].address_components[0].long_name;
-            document.getElementById("inputCity").value = response.results[0].address_components[2].long_name;
-            document.getElementById("inputState").value = response.results[0].address_components[response.results[0].address_components.length - 3].long_name;
-            document.getElementById("inputZip").value = response.results[0].address_components[response.results[0].address_components.length - 1].long_name;
-            document.getElementById("inputCountry").value = response.results[0].address_components[response.results[0].address_components.length - 2].long_name;
+            document.getElementById("inputAddress").value = response.results[0].formatted_address;
+            /*
+                        document.getElementById("inputStreet").value = response.results[0].address_components[1].long_name;
+                        document.getElementById("inputUnit").value = response.results[0].address_components[0].long_name;
+                        document.getElementById("inputCity").value = response.results[0].address_components[2].long_name;
+                        document.getElementById("inputState").value = response.results[0].address_components[response.results[0].address_components.length - 3].long_name;
+                        document.getElementById("inputZip").value = response.results[0].address_components[response.results[0].address_components.length - 1].long_name;
+                        document.getElementById("inputCountry").value = response.results[0].address_components[response.results[0].address_components.length - 2].long_name;*/
         }
     };
     xhttp.open("GET", url, true);
