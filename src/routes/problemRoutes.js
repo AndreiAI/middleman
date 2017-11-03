@@ -88,6 +88,7 @@ var router = function () {
                             //console.log(updates);
 
                             res.render('taskManagerDetailed', {
+                                user: req.user,
                                 result: results[0],
                                 back: '/auth/logIn'
                             });
