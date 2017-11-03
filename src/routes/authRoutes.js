@@ -452,7 +452,7 @@ var router = function () {
 
     authRouter.route('/profileSettings')
         .all(function (req, res, next) {
-            if (!(req.user && req.user.type === 'client')) {
+            if (!req.user) {
                 res.redirect('/');
             } else {
                 next();
