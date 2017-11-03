@@ -24,6 +24,10 @@ let transporter = nodemailer.createTransport({
     }
 });
 
+let mailOptions = {
+    from: '"SOLVERLY" <problem@solverly.io>', // sender address
+};
+
 var google_separator = new RegExp('(On .*> wrote:)');
 var separator = '~~~~~~~~~~~~~~~~~~~~~~~~Reply above~~~~~~~~~~~~~~~~~~~~~~~~';
 
