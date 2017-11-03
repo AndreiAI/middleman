@@ -292,7 +292,9 @@ var router = function () {
         })
         .get(function (req, res) {
             console.log('smth');
-            res.render('newLogProblem');
+            res.render('newLogProblem', {
+                user: req.user
+            });
         })
         .post(function (req, res) {
             //~~~~~~~~~~~~~~~~Check for spambots~~~~~~~~~~~~~~~~~~~~~~~~
