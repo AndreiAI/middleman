@@ -34,6 +34,11 @@
 	<script type="text/javascript" src="/assets/js/core/app.js"></script>
 	<script type="text/javascript" src="/assets/js/pages/user_pages_profile.js"></script>
 	<!-- /theme JS files -->
+    <script>
+        function saveInfo() {
+            document.getElementById("updateForm").submit();
+        }
+    </script>
 
 </head>
 
@@ -310,7 +315,7 @@
 				<li class="dropdown dropdown-user">
 					<a class="dropdown-toggle" data-toggle="dropdown">
 						<img src="/assets/images/placeholder.jpg" alt="">
-						<span>Victoria</span>
+						<span><%= user.firstName %></span>
 						<i class="caret"></i>
 					</a>
 
@@ -1762,88 +1767,65 @@
 										</div>
 
 										<div class="panel-body">
-											<form action="#">
+											 <form id="updateForm" action='' method="post">
 												<div class="form-group">
 													<div class="row">
 														<div class="col-md-6">
-															<label>Username</label>
-															<input type="text" value="Eugene" class="form-control">
+															<label>First name</label>
+															<input name="firstName" type="text" class="form-control" placeholder="John">
 														</div>
 														<div class="col-md-6">
-															<label>Full name</label>
-															<input type="text" value="Kopyov" class="form-control">
+															<label>Last name</label>
+															<input name="lastName" type="text" class="form-control" placeholder="Doe">
 														</div>
 													</div>
 												</div>
-
-												<div class="form-group">
-													<div class="row">
-														<div class="col-md-6">
-															<label>Address line 1</label>
-															<input type="text" value="Ring street 12" class="form-control">
-														</div>
-														<div class="col-md-6">
-															<label>Address line 2</label>
-															<input type="text" value="building D, flat #67" class="form-control">
-														</div>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<div class="row">
-														<div class="col-md-4">
-															<label>City</label>
-															<input type="text" value="Munich" class="form-control">
-														</div>
-														<div class="col-md-4">
-															<label>State/Province</label>
-															<input type="text" value="Bayern" class="form-control">
-														</div>
-														<div class="col-md-4">
-															<label>ZIP code</label>
-															<input type="text" value="1031" class="form-control">
-														</div>
-													</div>
-												</div>
-
-												<div class="form-group">
+                                                
+                                                <div class="form-group">
 													<div class="row">
 														<div class="col-md-6">
 															<label>Email</label>
-															<input type="text" readonly="readonly" value="eugene@kopyov.com" class="form-control">
+															<input type="text" value="<%= user.email %>" readonly="readonly" class="form-control">
 														</div>
+                                                        <% if(typeof error != 'undefined') { %>
+                                                            <!--
+                                                            <div class="col-md-6">
+                                                                <label>Current password</label>
+                                                                <input name="password" type="password" class="form-control">
+                                                            </div>
+                                                            -->
+                                                            <div class="form-group has-error has-feedback">
+                                                                <input type="password" name="password" class="form-control" placeholder="Password">
+                                                                <div class="form-control-feedback">
+                                                                    <i class="icon-cancel-circle2"></i>
+                                                                </div>
+                                                                <span class="help-block">Password incorrect</span>
+                                                            </div>
+                                                        <% } else { %>
+                                                            <div class="col-md-6">
+                                                                <label>Current password</label>
+                                                                <input name="password" type="password" class="form-control">
+                                                            </div>
+                                                        <% } %>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<div class="row">
 														<div class="col-md-6">
-								                            <label>Your country</label>
-								                            <select class="select">
-								                                <option value="germany" selected="selected">Germany</option> 
-								                                <option value="france">France</option> 
-								                                <option value="spain">Spain</option> 
-								                                <option value="netherlands">Netherlands</option> 
-								                                <option value="other">...</option> 
-								                                <option value="uk">United Kingdom</option> 
-								                            </select>
+															<label>New password (optional)</label>
+															<input name="newPassword" type="password" placeholder="Enter new password" class="form-control">
+														</div>
+
+														<div class="col-md-6">
+															<label>Repeat password (optional)</label>
+															<input name="confirmNewPassword" type="password" placeholder="Repeat new password" class="form-control">
 														</div>
 													</div>
 												</div>
 
-						                        <div class="form-group">
-						                        	<div class="row">
-						                        		<div class="col-md-6">
-															<label>Phone #</label>
-															<input type="text" value="+99-99-9999-9999" class="form-control">
-															<span class="help-block">+99-99-9999-9999</span>
-						                        		</div>
-
-														<div class="col-md-6">
-															<label class="display-block">Upload profile image</label>
-						                                    <input type="file" class="file-styled">
-						                                    <span class="help-block">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
-														</div>
-						                        	</div>
-						                        </div>
-
 						                        <div class="text-right">
-						                        	<button type="submit" class="btn btn-primary">Save <i class="icon-arrow-right14 position-right"></i></button>
+						                        	<button type="submit" class="btn btn-primary" onclick="saveInfo()">Save <i class="icon-arrow-right14 position-right"></i></button>
 						                        </div>
 											</form>
 										</div>
@@ -1851,7 +1833,7 @@
 									<!-- /profile info -->
 
 
-									<!-- Account settings -->
+									<!-- Account settings
 									<div class="panel panel-flat">
 										<div class="panel-heading">
 											<h6 class="panel-title">Account settings</h6>
