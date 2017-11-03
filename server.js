@@ -50,7 +50,7 @@ app.get('/', function (req, res) {
     } else {
         if (req.connection.encrypted) {
             res.render('newLogin', {
-                issues: false
+                issue: false
             });
         } else {
             res.redirect('https://solverly.io/');
