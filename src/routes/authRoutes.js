@@ -334,18 +334,11 @@ var router = function () {
                                     clientFirstName: req.user.firstName,
                                     summary: req.body.summary,
                                     description: req.body.description,
-                                    address: {
-                                        adressLine1: req.body.addressLine1,
-                                        adressLine2: req.body.addressLine2,
-                                        city: req.body.city,
-                                        state: req.body.state,
-                                        zip: req.body.zip,
-                                        country: req.body.country
-                                    },
+                                    address: req.body.address,
                                     phone: req.body.phone,
                                     handler: resultsHandlers[resultsProblems.length % resultsHandlers.length].email,
                                     handlerFirstName: resultsHandlers[resultsProblems.length % resultsHandlers.length].firstName,
-                                    status: 'pending'
+                                    status: 'unassigned'
                                 }
 
                                 database.saveProblem(problem, function (response) {
