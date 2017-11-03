@@ -460,7 +460,7 @@ var router = function () {
         })
         .get(function (req, res) {
             console.log(req.user);
-            res.render('profileSettings', {
+            res.render('newProfile', {
                 user: req.user
             });
         })
