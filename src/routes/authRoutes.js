@@ -503,13 +503,13 @@ var router = function () {
                             }
                         });
                     } else {
-                        res.render('profileSettings', {
+                        res.render('newProfile', {
                             user: req.user,
                             error: 'Passwords do not match!'
                         });
                     }
                 } else {
-                    res.render('profileSettings', {
+                    res.render('newProfile', {
                         user: req.user,
                         error: 'Wrong password!'
                     });
