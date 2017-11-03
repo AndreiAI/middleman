@@ -176,7 +176,9 @@ var router = function () {
                     }
                 })*/
         .post(function (req, res) {
+            console.log('Got post for login');
             passport.authenticate('local', function (err, user, info) {
+                console.log('Inside passport');
                 if (err) {
                     console.log(err);
                     res.render('newLogin', {
@@ -191,13 +193,14 @@ var router = function () {
                         email: req.body.email
                     });
                 } else {
-                    if (req.user.type === 'client') {
+                    console.log('USER: ', user)
+                    if (user.type === 'client') {
                         res.redirect('client');
-                    } else if (req.user.type === 'handler') {
+                    } else if (user.type === 'handler') {
                         res.redirect('profileHandler2');
-                    } else if (req.user.type === 'fixer') {
+                    } else if (user.type === 'fixer') {
                         res.redirect('profileFixer2');
-                    } else if (req.user.type === 'admin') {
+                    } else if (user.type === 'admin') {
                         res.redirect('profileAdmin');
                     }
                 }
