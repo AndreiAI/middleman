@@ -1706,8 +1706,7 @@
                     </div>
                 <% } %>
                 
-                <% if (problmsUnassigned) { %>
-                <% if (problemsUnassigned && problemsUnassigned.length > 0) { %>
+                <% if (typeof(problemsUnassigned) != undefined && problemsUnassigned.length > 0) { %>
 
                     <div class="text-center content-group text-muted content-divider">
                         <span class="pt-10 pb-10">Unassigned Website</span>
@@ -1898,9 +1897,9 @@
                             <% } %>
                         </div>
                     <% } %>
-                <% }} %>
+                <% } %>
                 
-                <% if (emailProblems && emailProblems.length > 0) { %>
+                <% if (typeof(emailProblems) != undefined && emailProblems.length > 0) { %>
 
                     <div class="text-center content-group text-muted content-divider">
                         <span class="pt-10 pb-10">Unassigned Mail</span>
