@@ -1473,6 +1473,7 @@
 
 							<div class="panel-body">
 								<ul class="media-list content-group-lg stack-media-on-mobile">
+                                    <% result.updates.sort(function (a, b) { return !(a.totalTime - b.totalTime)}); %>
                                     <% for(var i = 0; i < result.updates.length; i ++) { %>
                                         <li class="media">
                                             <div class="media-left">
