@@ -160,6 +160,25 @@ var router = function () {
             });
         });
 
+    authRouter.route('/signUpFixer')
+        .post(function (req, res) {
+            var user = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email.toLowerCase(),
+                password: req.body.password,
+                type: 'fixer'
+            }
+
+            database.saveUser(user, function (response) {
+                if (response === true) {
+                    res.redirect('/auth/profileAdmin');
+                } else {
+                    res.redirect('/auth/profileAdmin');
+                }
+            });
+        });
+
     authRouter.route('/logIn')
         .post(passport.authenticate('local', {
             failureRedirect: '/auth/logInFailed'
@@ -705,13 +724,15 @@ var router = function () {
             next();
         })
         .get(function (req, res) {
-            database.getHandlers(function (results) {
+            database.getHandlers(function (handlers) {
                 //console.log(results);
-
-                res.render('newAdmin', {
-                    user: req.user,
-                    results: results
-                });
+                database.getFixers(function (fixers) {
+                    res.render('newAdmin', {
+                        user: req.user,
+                        handlers: handlers,
+                        fixers: fixers
+                    });
+                })
             });
         });
 

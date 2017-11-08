@@ -195,6 +195,18 @@ var database = function () {
         });
     };
 
+    var getFixers = function (callback) {
+        mongodb.connect(url, function (err, db) {
+            var collection = db.collection('users');
+
+            collection.find({
+                type: 'fixer'
+            }).toArray(function (err, result) {
+                return callback(result);
+            });
+        });
+    };
+
     var saveUpdate = function (update, callback) {
         mongodb.connect(url, function (err, db) {
             var collection = db.collection('updates');
@@ -233,6 +245,7 @@ var database = function () {
         deleteEmailProblems: deleteEmailProblems,
         updateProblem: updateProblem,
         getHandlers: getHandlers,
+        getFixers: getFixers,
         saveUpdate: saveUpdate,
         getUpdates: getUpdates
     }
