@@ -36,8 +36,8 @@
 	<!-- /theme JS files -->
     <script>
         function saveInfo() {
-            if(document.getElementById("confirmEmail").value == document.getElementById("email")) {
-                if(document.getElementById("confirmPassword").value == document.getElementById("password")) {
+            if(document.getElementById("confirmEmail").value == document.getElementById("email").value) {
+                if(document.getElementById("confirmPassword").value == document.getElementById("password").value) {
                     document.getElementById("updateForm").submit();
                 } else {
                     alert("Passwords do not match!");
