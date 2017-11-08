@@ -708,7 +708,7 @@ var router = function () {
             database.getHandlers(function (results) {
                 //console.log(results);
 
-                res.render('profileAdmin', {
+                res.render('newAdmin', {
                     user: req.user,
                     results: results
                 });
