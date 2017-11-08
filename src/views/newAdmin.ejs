@@ -39,6 +39,7 @@
             if(!(document.getElementById("firstName").value == " " || document.getElementById("lastName").value == " " || document.getElementById("password").value == " " || document.getElementById("email").value == " ")){            
                 if(document.getElementById("confirmEmail").value == document.getElementById("email").value) {
                     if(document.getElementById("confirmPassword").value == document.getElementById("password").value) {
+                        console.log("Got here");
                         document.getElementById("handlerForm").submit();
                     } else {
                         alert("Passwords do not match!");
