@@ -180,7 +180,7 @@ var mail = function () {
                     mailOptions.subject = 'PROBLEM' + mail.subject.split('PROBLEM')[1];
                     mailOptions.text = 'Updates:\n\n';
 
-                    updatesResults.updates.sort(function (a, b) {
+                    updatesResults.sort(function (a, b) {
                         return b.totalTime - a.totalTime;
                     });
 
