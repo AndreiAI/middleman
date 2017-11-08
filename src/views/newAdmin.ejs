@@ -36,9 +36,31 @@
 	<!-- /theme JS files -->
     <script>
         function saveHandler() {
+            if(document.getElementById("firstName").value == " ") break;
+            if(document.getElementById("lastName").value == " ") break;
+            if(document.getElementById("password").value == " ") break;
+            if(document.getElementById("email").value == " ") break;
+            
             if(document.getElementById("confirmEmail").value == document.getElementById("email").value) {
                 if(document.getElementById("confirmPassword").value == document.getElementById("password").value) {
                     document.getElementById("handlerForm").submit();
+                } else {
+                    alert("Passwords do not match!");
+                }
+            } else {
+                alert("Emails do not match!");
+            }
+        }
+        
+        function saveFixer() {
+            if(document.getElementById("fixerFirstName").value == " ") break;
+            if(document.getElementById("fixerlastName").value == " ") break;
+            if(document.getElementById("fixerPassword").value == " ") break;
+            if(document.getElementById("fixerEmail").value == " ") break;
+            
+            if(document.getElementById("fixerConfirmEmail").value == document.getElementById("fixerEmail").value) {
+                if(document.getElementById("fixerConfirmPassword").value == document.getElementById("fixerPassword").value) {
+                    document.getElementById("fixerForm").submit();
                 } else {
                     alert("Passwords do not match!");
                 }
@@ -1804,11 +1826,11 @@
 													<div class="row">
 														<div class="col-md-6">
 															<label>First name</label>
-															<input name="firstName" type="text" placeholder="John" class="form-control" required>
+															<input id="firstName" name="firstName" type="text" placeholder="John" class="form-control" required>
 														</div>
 														<div class="col-md-6">
 															<label>Last name</label>
-															<input name="lastName" type="text" placeholder="Doe" class="form-control" required>
+															<input id="lastName" name="lastName" type="text" placeholder="Doe" class="form-control" required>
 														</div>
 													</div>
 												</div>
@@ -1884,11 +1906,11 @@
 													<div class="row">
 														<div class="col-md-6">
 															<label>First name</label>
-															<input name="firstName" type="text" placeholder="John" class="form-control" required>
+															<input id="fixerFirstName" name="firstName" type="text" placeholder="John" class="form-control" required>
 														</div>
 														<div class="col-md-6">
 															<label>Last name</label>
-															<input name="lastName" type="text" placeholder="Doe" class="form-control" required>
+															<input id="fixerLastName" name="lastName" type="text" placeholder="Doe" class="form-control" required>
 														</div>
 													</div>
 												</div>
