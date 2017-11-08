@@ -1791,10 +1791,10 @@
 
                                                     <div class="media-body">
                                                         <div class="media-heading">
-                                                            <a href="#" class="text-semibold"><%= handlers.firstName %> <%= handlers.lastName %></a>
+                                                            <a href="#" class="text-semibold"><%= handlers[i].firstName %> <%= handlers[i].lastName %></a>
                                                         </div>
 
-                                                        <p><%= handlers.email %></p>
+                                                        <p><%= handlers[i].email %></p>
                                                     </div>
                                                 </li>
                                             <% } %>
@@ -1871,10 +1871,10 @@
 
                                                     <div class="media-body">
                                                         <div class="media-heading">
-                                                            <a href="#" class="text-semibold"><%= fixers.firstName %> <%= fixers.lastName %></a>
+                                                            <a href="#" class="text-semibold"><%= fixers[i].firstName %> <%= fixers[i].lastName %></a>
                                                         </div>
 
-                                                        <p><%= fixers.email %></p>
+                                                        <p><%= fixers[i].email %></p>
                                                     </div>
                                                 </li>
                                             <% } %>
