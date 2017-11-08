@@ -658,6 +658,42 @@ var router = function () {
         })
         .post(function (req, res) {
             //how to update this one
+
+            database.getUsers({
+                email: req.body.fixer,
+                type: "fixer"
+            }, function (results) {
+                if (results.length == 0) {
+                    var user = {
+                        firstName: "John",
+                        lastName: "Doe",
+                        email: req.body.fixer.toLowerCase(),
+                        password: 'pass',
+                        type: 'fixer'
+                    }
+
+                    database.saveUser(user, function (response) {
+                        if (response === true) {
+                            console.log("New fixer saved: ", user);
+
+                            mailOptions.subject = 'Welcome to Solverly!';
+                            mailOptions.to = user.email;
+                            mailOptions.text = 'We just got your fixer account set up. Do change your name and password in the profile settings.\n\nHere are you credentials:\n\nemail: ' + user.email + '\npassword: ' + 'pass' + '\n\n';
+
+                            transporter.sendMail(mailOptions, (error, info) => {
+                                if (error) {
+                                    return console.log(error);
+                                }
+                                console.log('Message sent: %s', info.messageId);
+                                console.log(mailOptions.subject);
+                            });
+                        } else {
+                            console.log("There was a problem saving new fixer: ", user);
+                        }
+                    });
+                }
+            })
+
             console.log(req.body);
             req.body.status = 'onGoing';
             database.updateProblem(req.body.id, req.body, function (response) {
