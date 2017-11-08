@@ -36,7 +36,7 @@
 	<!-- /theme JS files -->
     <script>
         function saveHandler() {
-            if(!(document.getElementById("firstName").value == " " || document.getElementById("lastName").value == " " || document.getElementById("password").value == " " || document.getElementById("email").value == " ")){            
+            if(!(document.getElementById("firstName").value == "" || document.getElementById("lastName").value == "" || document.getElementById("password").value == "" || document.getElementById("email").value == "")){            
                 if(document.getElementById("confirmEmail").value == document.getElementById("email").value) {
                     if(document.getElementById("confirmPassword").value == document.getElementById("password").value) {
                         console.log("Got here");
@@ -51,7 +51,7 @@
         }
         
         function saveFixer() {
-            if(!(document.getElementById("fixerFirstName").value == " " || document.getElementById("fixerLastName").value == " " || document.getElementById("fixerPassword").value == " " || document.getElementById("fixerEmail").value == " ")){  
+            if(!(document.getElementById("fixerFirstName").value == "" || document.getElementById("fixerLastName").value == "" || document.getElementById("fixerPassword").value == "" || document.getElementById("fixerEmail").value == "")){  
             
                 if(document.getElementById("fixerConfirmEmail").value == document.getElementById("fixerEmail").value) {
                     if(document.getElementById("fixerConfirmPassword").value == document.getElementById("fixerPassword").value) {
