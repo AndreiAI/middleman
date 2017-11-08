@@ -36,36 +36,31 @@
 	<!-- /theme JS files -->
     <script>
         function saveHandler() {
-            if(document.getElementById("firstName").value == " ") break;
-            if(document.getElementById("lastName").value == " ") break;
-            if(document.getElementById("password").value == " ") break;
-            if(document.getElementById("email").value == " ") break;
-            
-            if(document.getElementById("confirmEmail").value == document.getElementById("email").value) {
-                if(document.getElementById("confirmPassword").value == document.getElementById("password").value) {
-                    document.getElementById("handlerForm").submit();
+            if(!(document.getElementById("firstName").value == " " || document.getElementById("lastName").value == " " || document.getElementById("password").value == " " || document.getElementById("email").value == " ")){            
+                if(document.getElementById("confirmEmail").value == document.getElementById("email").value) {
+                    if(document.getElementById("confirmPassword").value == document.getElementById("password").value) {
+                        document.getElementById("handlerForm").submit();
+                    } else {
+                        alert("Passwords do not match!");
+                    }
                 } else {
-                    alert("Passwords do not match!");
+                    alert("Emails do not match!");
                 }
-            } else {
-                alert("Emails do not match!");
             }
         }
         
         function saveFixer() {
-            if(document.getElementById("fixerFirstName").value == " ") break;
-            if(document.getElementById("fixerlastName").value == " ") break;
-            if(document.getElementById("fixerPassword").value == " ") break;
-            if(document.getElementById("fixerEmail").value == " ") break;
+            if(!(document.getElementById("fixerFirstName").value == " " || document.getElementById("fixerLastName").value == " " || document.getElementById("fixerPassword").value == " " || document.getElementById("fixerEmail").value == " ")){  
             
-            if(document.getElementById("fixerConfirmEmail").value == document.getElementById("fixerEmail").value) {
-                if(document.getElementById("fixerConfirmPassword").value == document.getElementById("fixerPassword").value) {
-                    document.getElementById("fixerForm").submit();
+                if(document.getElementById("fixerConfirmEmail").value == document.getElementById("fixerEmail").value) {
+                    if(document.getElementById("fixerConfirmPassword").value == document.getElementById("fixerPassword").value) {
+                        document.getElementById("fixerForm").submit();
+                    } else {
+                        alert("Passwords do not match!");
+                    }
                 } else {
-                    alert("Passwords do not match!");
+                    alert("Emails do not match!");
                 }
-            } else {
-                alert("Emails do not match!");
             }
         }
         
