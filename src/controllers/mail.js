@@ -179,6 +179,11 @@ var mail = function () {
                     mailOptions.to = mail.from[0].address;
                     mailOptions.subject = 'PROBLEM' + mail.subject.split('PROBLEM')[1];
                     mailOptions.text = 'Updates:\n\n';
+
+                    updatesResults.updates.sort(function (a, b) {
+                        return b.totalTime - a.totalTime;
+                    });
+
                     updatesResults.forEach(function (update) {
                         mailOptions.text += '' + update.timestamp + ' - ' + update.authorFirstName + ' : ' + update.update + '\n';
                     });
