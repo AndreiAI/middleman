@@ -1830,7 +1830,7 @@
                                                         <p><%= handlers[i].email %></p>
                                                     </div>
                                                     
-                                                    <div class="text-right">
+                                                    <div class="media-right">
                                                         <form id="deleteHandler<%= handlers[i]._id %>" action="/auth/deleteUser" method="post" style="display: none">
                                                             <input type="hidden" name="userID" value="<%= handlers[i]._id %>" />
                                                         </form>
@@ -1917,7 +1917,7 @@
                                                         <p><%= fixers[i].email %></p>
                                                     </div>
                                                     
-                                                    <div class="text-right">
+                                                    <div class="media-right">
                                                         <form id="deleteFixer<%=fixers[i]._id%>" action="/auth/deleteUser" method="post" style="display: none">
                                                             <input type="hidden" name="userID" value="<%=fixers[i]._id%>" />
                                                         </form>
