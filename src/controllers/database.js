@@ -69,6 +69,20 @@ var database = function () {
         });
     };
 
+    var deleteUser = function (filter, callback) {
+        mongodb.connect(url, function (err, db) {
+            var collection = db.collection('users');
+
+            collection.deleteMany(filter, function (err, res) {
+                if (err) {
+                    return callback(false);
+                } else {
+                    return callback(true);
+                }
+            })
+        });
+    };
+
     var saveProblem = function (problem, callback) {
         mongodb.connect(url, function (err, db) {
             var collection = db.collection('problems');
@@ -237,6 +251,7 @@ var database = function () {
         saveUser: saveUser,
         getUsers: getUsers,
         updateUser: updateUser,
+        deleteUser: deleteUser,
         saveProblem: saveProblem,
         saveEmailProblem: saveEmailProblem,
         checkCredentials: checkCredentials,

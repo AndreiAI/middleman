@@ -179,6 +179,15 @@ var router = function () {
             });
         });
 
+    authRouter.route('/deleteUser')
+        .post(function (req, res) {
+            database.deleteUser({
+                _id: objectId(req.body.userID)
+            }, function (response) {
+                res.redirect('/auth/profileAdmin');
+            })
+        })
+
     authRouter.route('/logIn')
         .post(passport.authenticate('local', {
             failureRedirect: '/auth/logInFailed'
